@@ -1,0 +1,173 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: lightgrey;
+}
+
+
+.loginbox{
+    margin: 200pt 200pt 50pt 200pt;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.6);
+    padding: 20pt;
+    background: white;
+}
+
+.loginmenu{
+    position: center;
+    width: 260pt;
+    display: inline-block;
+}
+
+.back-picture{
+    size: 500px;
+    display: inline-block;
+}
+
+.username-input{
+    margin: 20pt;
+}
+
+.password-input{
+    margin: 20pt;
+}
+
+.log-in-form-username {
+    width: 180pt;
+    padding: 8px;
+    display: inline-block;
+    margin: 0px 0px 0px;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    outline: none;
+    height: 40px;
+    border-left-width: 1px;
+}
+
+.log-in-form-password{
+    width: 180pt;
+    padding: 8px;
+    display: inline-block;
+    margin: 0px 0px 0px;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    outline: none;
+    height: 40px;
+    border-left-width: 1px;
+}
+
+.icon{
+    color: gainsboro;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    display: inline-block;
+    padding: 8px;
+    margin: 0px 0px 0px;
+    height: 40px;
+    border-right-width: 1px;
+}
+
+.eye-icon{
+    color: gainsboro;
+    margin: -30pt;
+    display: inline-block;
+}
+
+.logo-picture{
+    margin: 0;
+    padding: 0;
+    position:absolute;
+}
+
+.loginmenu a{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20pt;
+    padding: 0;
+    font-weight: bold;
+    text-decoration: none;
+    color: gainsboro;
+}
+
+.loginmenu input[type="submit"]
+{
+    margin-left: 30pt;
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 80pt;
+    background: green;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.loginmenu input[type=submit]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+
+.line {
+    margin-left: 20pt;
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    color: gainsboro;
+}
+.line span {
+
+    background-color: #ffffff;
+    position: relative;
+    z-index: 2;
+    padding: 0px 20px;
+}
+.line:after {
+    content: '';
+    display: block;
+    width: 205pt;
+    height: 2px;
+    background-color: #262626;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    z-index: 0;
+}
+
+.social-button{
+    width: 40pt ;
+    height: 30pt;
+    color: grey;
+    background-color: white;
+    border-radius:  5px; /* IE 9, Safari 5, Chrome */
+    border-style: solid;
+    margin-left: 20pt;
+}
+
+.create-account-menu{
+    color: gainsboro;
+    margin-top: 50pt;
+    margin-bottom: 20pt;
+    margin-left: 20pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

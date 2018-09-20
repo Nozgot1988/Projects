@@ -1,0 +1,144 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url("backgroundpng.png");
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+
+}
+
+.loginbox{
+    width: 320pt;
+    height: 420pt;
+    background: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    box-shadow: 0.1em 0.4em 16px rgba(0,0,0,0.5);
+    padding: 20pt 30pt;
+}
+
+h1{
+  margin: 0;
+    padding: 0 0 15pt;
+    text-align: center;
+    font-size: 26pt;
+}
+
+.line {
+    margin-left: 20pt;
+    font-size: 9pt;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    color: grey;
+}
+.line span {
+
+    background-color: #ffffff;
+    position: relative;
+    z-index: 2;
+    padding: 0px 20px;
+}
+.line:after {
+    content: '';
+    display: block;
+    width: 240pt;
+    height: 2px;
+    background-color: #262626;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    z-index: 0;
+}
+
+.fb-button{
+    width: 40pt ;
+    height: 30pt;
+    color: white;
+    background-color: red;
+    border-radius:  5px; /* IE 9, Safari 5, Chrome */
+    border-style: solid;
+    margin-left: 60pt;
+}
+
+.google-button{
+    width: 40pt ;
+    height: 30pt;
+    color: white;
+    background-color: blue;
+    border-radius:  5px; /* IE 9, Safari 5, Chrome */
+    border-style: solid;
+    margin-left: 60pt;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+input {
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+input:focus {
+    outline: none;
+}
+
+/* LABEL ======================================= */
+label {
+    color: #999;
+    font-size: 18px;
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 15px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label {
+    top: -15px;
+    font-size: 14px;
+    color: grey;
+}
+
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 320px;
+}
+.bar:before, .bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: yellow;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+    left: 50%;
+}
+.bar:after {
+    right: 50%;
+}
+
+/* active state */
+input:focus ~ .bar:before,
+input:focus ~ .bar:after {
+    width: 50%;
+}
