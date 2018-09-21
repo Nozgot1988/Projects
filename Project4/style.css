@@ -6,9 +6,9 @@ body{
 
 .loginbox{
     background: white;
-    width: 680pt;
-    height: 400pt;
-    box-shadow: px 9px 30px rgba(0, 0, 0, 10);
+    width: 780pt;
+    height: 490pt;
+    box-shadow: 10px 9px 30px rgba(0, 0, 0, 10);
     top: 50%;
     left: 50%;
     position: absolute;
@@ -16,29 +16,31 @@ body{
 }
 
 .loginmenu{
+    float: left;
     width: 260pt;
     height: 305pt;
-    margin-left: 20pt;
-    margin-top: 70pt;
+    margin-left: 40pt;
+    margin-top: 120pt;
 }
 
 .logo-picture {
-    margin-top: 20pt;
-    margin-left: 20pt;
+    margin-top: 40pt;
+    margin-left: 40pt;
 }
 
-.side-picture{
-    width: 700pt;
-    height: 400pt;
-}
+/*.side-picture{*/
+    /*width: 700pt;*/
+    /*height: 400pt;*/
+
+/*}*/
 .picture{
-    width: 400pt;
-    height: 400pt;
+    width: 480pt;
+    height: 490pt;
 }
 
 .smallpicture{
     width: 50pt;
-    height: 30pt;
+    height: 35pt;
 }
 .logo-menu{
     float: left;

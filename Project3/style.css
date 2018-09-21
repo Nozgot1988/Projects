@@ -9,8 +9,8 @@ body{
 }
 
 .loginbox{
-    width: 320pt;
-    height: 420pt;
+    width: 380pt;
+    height: 400pt;
     background: white;
     top: 50%;
     left: 50%;
@@ -28,33 +28,6 @@ h1{
     font-size: 26pt;
 }
 
-.line {
-    margin-left: 20pt;
-    font-size: 9pt;
-    font-weight: bold;
-    text-align: center;
-    position: relative;
-    color: grey;
-}
-.line span {
-
-    background-color: #ffffff;
-    position: relative;
-    z-index: 2;
-    padding: 0px 20px;
-}
-.line:after {
-    content: '';
-    display: block;
-    width: 240pt;
-    height: 2px;
-    background-color: #262626;
-    position: absolute;
-    top: 50%;
-    margin-top: -1px;
-    z-index: 0;
-}
-
 .fb-button{
     width: 40pt ;
     height: 30pt;
@@ -62,7 +35,8 @@ h1{
     background-color: red;
     border-radius:  5px; /* IE 9, Safari 5, Chrome */
     border-style: solid;
-    margin-left: 60pt;
+    margin-top: 20pt;
+    margin-left: 80pt;
 }
 
 .google-button{
@@ -72,22 +46,26 @@ h1{
     background-color: blue;
     border-radius:  5px; /* IE 9, Safari 5, Chrome */
     border-style: solid;
-    margin-left: 60pt;
+    margin-top: 20pt;
+    margin-left: 80pt;
 }
+
 
 .group {
-    position: relative;
-    margin-bottom: 30px;
-}
+     position: relative;
+     margin-bottom: 30px;
+ }
 
 input {
+
     font-size: 16px;
     padding: 10px;
     display: block;
-    width: 300px;
+    width: 180px;
     border: none;
     border-bottom: 1px solid #ccc;
 }
+
 input:focus {
     outline: none;
 }
@@ -95,6 +73,7 @@ input:focus {
 /* LABEL ======================================= */
 label {
     color: #999;
+    font-weight: normal;
     font-size: 18px;
     position: absolute;
     pointer-events: none;
@@ -117,7 +96,7 @@ input:focus ~ label, input:valid ~ label {
 .bar {
     position: relative;
     display: block;
-    width: 320px;
+    width: 200px;
 }
 .bar:before, .bar:after {
     content: "";
@@ -141,4 +120,42 @@ input:focus ~ label, input:valid ~ label {
 input:focus ~ .bar:before,
 input:focus ~ .bar:after {
     width: 50%;
+}
+
+.loginbox input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 30pt;
+    width: 300pt;
+    background: #ffc107;
+    color: white;
+    border-radius: 5pt;
+    margin-left: 10pt;
+
+}
+
+.loginbox input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #fb2525;
+    color: white;
+}
+
+.line{
+    margin-top: 30pt;
+    margin-bottom: 10pt;
+    height: 1px;
+    background: #cccccc;
+    width: 115pt;
+    float: left;
+}
+
+.or{
+    margin-top: 30pt;
+    margin-bottom: 10pt;
+    color: #cccccc;
+    font-size: 8pt;
+    margin-left: 15pt;
+    margin-right: 15pt;
 }

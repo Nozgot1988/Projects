@@ -13,7 +13,6 @@ body{
 }
 
 .loginmenu{
-    position: center;
     width: 260pt;
     display: inline-block;
 }
@@ -75,7 +74,7 @@ body{
 .logo-picture{
     margin: 0;
     padding: 0;
-    position:absolute;
+
 }
 
 .loginmenu a{
@@ -106,34 +105,6 @@ body{
     cursor: pointer;
     background: #ffc107;
     color: #000;
-}
-
-
-.line {
-    margin-left: 20pt;
-    font-size: 9px;
-    font-weight: bold;
-    text-align: center;
-    position: relative;
-    color: gainsboro;
-}
-.line span {
-
-    background-color: #ffffff;
-    position: relative;
-    z-index: 2;
-    padding: 0px 20px;
-}
-.line:after {
-    content: '';
-    display: block;
-    width: 205pt;
-    height: 2px;
-    background-color: #262626;
-    position: absolute;
-    top: 50%;
-    margin-top: -1px;
-    z-index: 0;
 }
 
 .social-button{
