@@ -1,0 +1,146 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: aliceblue;
+}
+
+.loginbox{
+    background: white;
+    width: 680pt;
+    height: 400pt;
+    box-shadow: px 9px 30px rgba(0, 0, 0, 10);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.loginmenu{
+    width: 260pt;
+    height: 305pt;
+    margin-left: 20pt;
+    margin-top: 70pt;
+}
+
+.logo-picture {
+    margin-top: 20pt;
+    margin-left: 20pt;
+}
+
+.side-picture{
+    width: 700pt;
+    height: 400pt;
+}
+.picture{
+    width: 400pt;
+    height: 400pt;
+}
+
+.smallpicture{
+    width: 50pt;
+    height: 30pt;
+}
+.logo-menu{
+    float: left;
+}
+
+.log-in-form-username {
+    color: #cccccc;
+    width: 200pt;
+    padding: 8px;
+    display: inline-block;
+    margin: 0px 0px 20px;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    outline: none;
+    height: 40px;
+    border-left-width: 1px;
+}
+
+.log-in-form-password{
+    color: #cccccc;
+    width: 200pt;
+    padding: 8px;
+    display: inline-block;
+    margin: 0px 0px 20px;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    outline: none;
+    height: 40px;
+    border-left-width: 1px;
+}
+.icon{
+    color: gainsboro;
+    box-sizing: border-box;
+    border: 2px solid gainsboro;
+    display: inline-block;
+    padding: 8px;
+    margin: 0px 0px 0px;
+    height: 40px;
+    border-right-width: 1px;
+}
+
+.eye-icon{
+    color: gainsboro;
+    margin: -30pt;
+    display: inline-block;
+}
+
+.loginmenu input[type="submit"]
+{
+
+    margin-left: 40pt;
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 80pt;
+    background: green;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.loginmenu input[type=submit]:hover
+{
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
+.social-button{
+    width: 40pt ;
+    height: 30pt;
+    color: grey;
+    background-color: white;
+    border-radius:  5px; /* IE 9, Safari 5, Chrome */
+    border-style: solid;
+    margin-left: 45pt;
+}
+
+.create-account-menu a{
+    text-decoration: none;
+    font-size: 10pt;
+    color: gainsboro;
+    margin-top: 15pt;
+    margin-bottom: 10pt;
+    float: left;
+}
+
+.line{
+    height: 1px;
+    background: #cccccc;
+    width: 100pt;
+    float: left;
+}
+
+.or{
+    color: #cccccc;
+    font-size: 10pt;
+    margin-left: 5pt;
+    margin-right: 5pt;
+}
+
+table{
+    margin-top: 30pt;
+    margin-bottom: 20pt;
+}
