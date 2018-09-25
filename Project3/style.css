@@ -10,7 +10,7 @@ body{
 
 .loginbox{
     width: 380pt;
-    height: 400pt;
+    height: 450pt;
     background: white;
     top: 50%;
     left: 50%;
@@ -37,6 +37,7 @@ h1{
     border-style: solid;
     margin-top: 20pt;
     margin-left: 80pt;
+    cursor: pointer;
 }
 
 .google-button{
@@ -48,6 +49,7 @@ h1{
     border-style: solid;
     margin-top: 20pt;
     margin-left: 80pt;
+    cursor: pointer;
 }
 
 
@@ -158,4 +160,23 @@ input:focus ~ .bar:after {
     font-size: 8pt;
     margin-left: 15pt;
     margin-right: 15pt;
+}
+
+.sign-in-button{
+    margin-top: 20pt;
+    margin-left: 10pt;
+    font-size: 12pt;
+    font-family: sans-serif;
+    color: white;
+    background: #ffc107;
+    height: 30pt;
+    width: 300pt;
+    border: none;
+    border-radius: 5pt;
+}
+
+.sign-in-button:hover{
+    cursor: pointer;
+    color:white;
+    background: #fb2525;
 }

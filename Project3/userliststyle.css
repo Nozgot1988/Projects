@@ -1,0 +1,86 @@
+body{
+    background: white;
+    font-family:  Arial;
+    font-size: 9pt;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    position: relative;
+    top: 25%;
+    left: 25%;
+    color: rgb(129, 150, 160);
+    margin: 20pt 40pt 40pt 90pt;
+    background: rgb(242, 247, 248);
+    width: 610pt;
+    height: 580pt;
+    border: none;
+}
+
+.user-table{
+    margin:0 10pt 0 20pt;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    position: absolute;
+}
+
+th{
+    text-align: left;
+
+}
+
+.head-photo{
+    width: 50pt;
+    height: 30pt;
+}
+
+.head-basic-info{
+    width: 220pt;
+    height: 30pt;
+}
+
+.head-age{
+    width: 50pt;
+    height: 30pt;
+}
+
+.head-city{
+    width: 50pt;
+    height: 30pt;
+}
+
+.head-college{
+    width: 120pt;
+    height: 30pt;
+}
+
+td{
+    height: 30pt;
+    background: white;
+}
+
+td:hover{
+    cursor: pointer;
+    background: rgb(229, 242, 248);
+}
+
+img{
+    border-radius: 50%;
+}
+
+div{
+    color: rgb(202, 210, 215);
+}
+
+button{
+    width: 40pt;
+    height: 20pt;
+    border-radius: 3pt;
+
+}
+
+
+
+
+

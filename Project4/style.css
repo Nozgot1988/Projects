@@ -76,7 +76,7 @@ body{
     box-sizing: border-box;
     border: 2px solid gainsboro;
     display: inline-block;
-    padding: 8px;
+    padding: 8.5px;
     margin: 0px 0px 0px;
     height: 40px;
     border-right-width: 1px;
@@ -119,14 +119,33 @@ body{
     margin-left: 45pt;
 }
 
-.create-account-menu a{
-    text-decoration: none;
-    font-size: 10pt;
-    color: gainsboro;
-    margin-top: 15pt;
+.create-account-menu {
+
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 80pt;
+    background: green;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-left: 15pt;
+    margin-top: 0pt;
     margin-bottom: 10pt;
     float: left;
 }
+
+.create-account-menu:hover{
+    cursor: pointer;
+    background: #ffc107;
+    color: white;
+}
+
+.create-account-menu {
+    size: 100pt;
+    text-decoration: none;
+    color: white;
+}
+
 
 .line{
     height: 1px;
