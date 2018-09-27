@@ -1,7 +1,74 @@
-td{
+table {
     border: 1pt solid black;
+}
+td{
+    width: 80pt;
+    height: 30pt;
+    border: 1pt solid black;
+}
+.up-triangle-name{
+    width: 0;
+    height: 0;
+    border-bottom: 10pt solid black;
+    border-left: 5pt solid transparent;
+    border-right: 5pt solid transparent;
+    float: right;
+    margin-right: 2pt;
+    cursor: pointer;
 }
 
-tr{
-    border: 1pt solid black;
+.up-triangle-last-name{
+    width: 0;
+    height: 0;
+    border-bottom: 10pt solid black;
+    border-left: 5pt solid transparent;
+    border-right: 5pt solid transparent;
+    float: right;
+    margin-right: 2pt;
+    cursor: pointer;
 }
+
+.up-triangle-address{
+    width: 0;
+    height: 0;
+    border-bottom: 10pt solid black;
+    border-left: 5pt solid transparent;
+    border-right: 5pt solid transparent;
+    float: right;
+    margin-right: 2pt;
+    cursor: pointer;
+}
+
+.up-triangle-email{
+    width: 0;
+    height: 0;
+    border-bottom: 10pt solid black;
+    border-left: 5pt solid transparent;
+    border-right: 5pt solid transparent;
+    float: right;
+    margin-right: 2pt;
+    cursor: pointer;
+}
+
+.bottom-triangle{
+    width: 0;
+    height: 0;
+    border-top: 10pt solid black;
+    border-left: 5pt solid transparent;
+    border-right: 5pt solid transparent;
+    margin-right: 2pt;
+    cursor: pointer;
+    margin-left: 70pt;
+}
+
+/*.bottom-triangle:hover{*/
+    /*border-top: 10pt solid red;*/
+    /*border-left: 5pt solid transparent;*/
+    /*border-right: 5pt solid transparent;*/
+/*}*/
+
+/*.up-triangle:hover{*/
+    /*border-bottom: 10pt solid red;*/
+    /*border-left: 5pt solid transparent;*/
+    /*border-right: 5pt solid transparent;*/
+/*}*/

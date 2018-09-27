@@ -1,34 +1,70 @@
-function createNode(element) {
-    return document.createElement(element);
+var x = document.getElementsByClassName('up-triangle-name');
+
+for(var i = 0; i < x.length; i++){
+    x[i].addEventListener("click", function (){
+        for(var i = 0; i < x.length; i++){
+            if(x[i].style.borderBottom === ""){
+                x[i].style.borderBottom = "10pt solid red"
+            } else {
+                x[i].style.color = ""
+            }
+        }
+    });
 }
 
-function  append(parent, el) {
-    return parent.appendChild(el);
+var x1 = document.getElementsByClassName('up-triangle-last-name');
+
+for(var i = 0; i < x1.length; i++){
+    x1[i].addEventListener("click", function (){
+        for(var i = 0; i < x1.length; i++){
+            if(x[i].style.borderBottom === ""){
+                x[i].style.borderBottom = "10pt solid red"
+            } else {
+                x[i].style.color = ""
+            }
+        }
+    });
 }
 
-const table = document.getElementById("authors");
+var x2 = document.getElementsByClassName('up-triangle-address');
 
-const url = 'https://randomuser.me/api/?results=10';
+for(var i = 0; i < x.length; i++){
+    x[i].addEventListener("click", function (){
+        for(var i = 0; i < x.length; i++){
+            if(x[i].style.borderBottom === ""){
+                x[i].style.borderBottom = "10pt solid red"
+            } else {
+                x[i].style.color = ""
+            }
+        }
+    });
+}
+var x3 = document.getElementsByClassName('up-triangle-email');
 
-fetch(url)
-.then((resp) => resp.json())
-.then(function (data) {
-    let authors = data.results;
-
-    return authors.map(function (author) {
-
-        let tr = createNode('tr'),
-            td = createNode('td'),
-            td1 = createNode('td1');
-
-        td.innerHTML=`${author.name.first} 
-        ${author.name.last}`;
-
-        td1.innerHTML=`${author.email}`;
-
-        append(tr, td);
-        append(tr,td1)
-        append(table, tr);
-
-    })
-})
+for(var i = 0; i < x.length; i++){
+    x[i].addEventListener("click", function (){
+        for(var i = 0; i < x.length; i++){
+            if(x[i].style.borderBottom === ""){
+                x[i].style.borderBottom = "10pt solid red"
+            } else {
+                x[i].style.color = ""
+            }
+        }
+    });
+}
+// var x = document.querySelectorAll('div');
+//
+// for(var i = 0; i < x.length; i++){
+//     x[i].addEventListener("click", function (){
+//         for(var i = 0; i < x.length; i++) {
+//             if (x[i] !== this) {
+//                 x[i].style.color = "";
+//             }
+//         }
+//         if (this.style.color === "red") {
+//             this.style.color = "";
+//         } else {
+//             this.style.color = "red"
+//         }
+//     });
+// }

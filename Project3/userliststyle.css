@@ -57,10 +57,14 @@ th{
 
 td{
     height: 30pt;
-    background: white;
+    background: transparent;
 }
 
-td:hover{
+tbody >tr {
+    background-color: white;
+}
+
+tbody >tr:hover{
     cursor: pointer;
     background: rgb(229, 242, 248);
 }
@@ -79,6 +83,56 @@ button{
     border-radius: 3pt;
 
 }
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+
+}
+
+.listItem{
+    padding: 10px 10px 10px 10px;
+    margin: 3px;
+    border-top: thick solid white;
+    border-top-width: 1px;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.dragStartClass {
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
+}
+
+.over {
+
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    height: 80px;
+    background-color: #ffc107;
+    color: white;
+}
+
+
+
+
+
 
 
 
