@@ -1,70 +1,79 @@
-var x = document.getElementsByClassName('up-triangle-name');
+var bottom = document.getElementsByClassName('bottom-triangle');
 
-for(var i = 0; i < x.length; i++){
-    x[i].addEventListener("click", function (){
-        for(var i = 0; i < x.length; i++){
-            if(x[i].style.borderBottom === ""){
-                x[i].style.borderBottom = "10pt solid red"
-            } else {
-                x[i].style.color = ""
+var up = document.getElementsByClassName('up-triangle');
+
+for (var i = 0; i < up.length; i++ ) {
+    up[i].onclick = function () {
+        sortTableAsc();
+        for (var i =0; i < up.length; i++ ){
+            if (up[i].tagName === "DIV"){
+                bottom[i].classList.remove('red-bottom');
+                up[i].classList.remove("red-up");
             }
         }
-    });
+        this.classList.add("red-up");
+    };
 }
 
-var x1 = document.getElementsByClassName('up-triangle-last-name');
-
-for(var i = 0; i < x1.length; i++){
-    x1[i].addEventListener("click", function (){
-        for(var i = 0; i < x1.length; i++){
-            if(x[i].style.borderBottom === ""){
-                x[i].style.borderBottom = "10pt solid red"
-            } else {
-                x[i].style.color = ""
+for (var y = 0; y < bottom.length; y++ ) {
+    bottom[y].onclick = function () {
+        sortTableDesc()
+        for (var i = 0; i < bottom.length; i++ ){
+            if (bottom[i].tagName === "DIV"){
+                bottom[i].classList.remove("red-bottom");
+                up[i].classList.remove('red-up');
             }
         }
-    });
+        this.classList.add("red-bottom");
+    };
 }
 
-var x2 = document.getElementsByClassName('up-triangle-address');
+function sortTableAsc() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("my-table");
+    switching = true;
 
-for(var i = 0; i < x.length; i++){
-    x[i].addEventListener("click", function (){
-        for(var i = 0; i < x.length; i++){
-            if(x[i].style.borderBottom === ""){
-                x[i].style.borderBottom = "10pt solid red"
-            } else {
-                x[i].style.color = ""
+    while (switching){
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length-1); i++){
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[0];
+            y = rows[i + 1].getElementsByTagName("TD")[0];
+            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                shouldSwitch = true;
+                break;
             }
         }
-    });
+        if (shouldSwitch){
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
 }
-var x3 = document.getElementsByClassName('up-triangle-email');
 
-for(var i = 0; i < x.length; i++){
-    x[i].addEventListener("click", function (){
-        for(var i = 0; i < x.length; i++){
-            if(x[i].style.borderBottom === ""){
-                x[i].style.borderBottom = "10pt solid red"
-            } else {
-                x[i].style.color = ""
+function sortTableDesc() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("my-table");
+    switching = true;
+
+    while (switching){
+        switching = false;
+        rows = table.rows;
+        for (i = 1; i < (rows.length-1); i++){
+            shouldSwitch = false;
+            x = rows[i].getElementsByTagName("TD")[0];
+            y = rows[i + 1].getElementsByTagName("TD")[0];
+            if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
+                shouldSwitch = true;
+                break;
             }
         }
-    });
+        if (shouldSwitch){
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+        }
+    }
 }
-// var x = document.querySelectorAll('div');
-//
-// for(var i = 0; i < x.length; i++){
-//     x[i].addEventListener("click", function (){
-//         for(var i = 0; i < x.length; i++) {
-//             if (x[i] !== this) {
-//                 x[i].style.color = "";
-//             }
-//         }
-//         if (this.style.color === "red") {
-//             this.style.color = "";
-//         } else {
-//             this.style.color = "red"
-//         }
-//     });
-// }
+
+

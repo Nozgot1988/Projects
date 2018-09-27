@@ -6,7 +6,7 @@ td{
     height: 30pt;
     border: 1pt solid black;
 }
-.up-triangle-name{
+.up-triangle{
     width: 0;
     height: 0;
     border-bottom: 10pt solid black;
@@ -17,38 +17,14 @@ td{
     cursor: pointer;
 }
 
-.up-triangle-last-name{
-    width: 0;
-    height: 0;
-    border-bottom: 10pt solid black;
-    border-left: 5pt solid transparent;
-    border-right: 5pt solid transparent;
-    float: right;
-    margin-right: 2pt;
-    cursor: pointer;
+.up-triangle:hover{
+    border-bottom: 10pt solid red;
 }
 
-.up-triangle-address{
-    width: 0;
-    height: 0;
-    border-bottom: 10pt solid black;
-    border-left: 5pt solid transparent;
-    border-right: 5pt solid transparent;
-    float: right;
-    margin-right: 2pt;
-    cursor: pointer;
+.red-up{
+    border-bottom: 10pt solid red;
 }
 
-.up-triangle-email{
-    width: 0;
-    height: 0;
-    border-bottom: 10pt solid black;
-    border-left: 5pt solid transparent;
-    border-right: 5pt solid transparent;
-    float: right;
-    margin-right: 2pt;
-    cursor: pointer;
-}
 
 .bottom-triangle{
     width: 0;
@@ -61,14 +37,10 @@ td{
     margin-left: 70pt;
 }
 
-/*.bottom-triangle:hover{*/
-    /*border-top: 10pt solid red;*/
-    /*border-left: 5pt solid transparent;*/
-    /*border-right: 5pt solid transparent;*/
-/*}*/
+.bottom-triangle:hover{
+    border-top: 10pt solid red;
+}
 
-/*.up-triangle:hover{*/
-    /*border-bottom: 10pt solid red;*/
-    /*border-left: 5pt solid transparent;*/
-    /*border-right: 5pt solid transparent;*/
-/*}*/
+.red-bottom{
+    border-top: 10pt solid red;
+}
