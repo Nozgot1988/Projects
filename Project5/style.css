@@ -6,6 +6,7 @@ td{
     height: 30pt;
     border: 1pt solid black;
 }
+
 .up-triangle{
     width: 0;
     height: 0;
@@ -34,6 +35,7 @@ td{
     border-right: 5pt solid transparent;
     margin-right: 2pt;
     cursor: pointer;
+    margin-top: 3pt;
     margin-left: 70pt;
 }
 

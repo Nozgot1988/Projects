@@ -2,9 +2,10 @@ var bottom = document.getElementsByClassName('bottom-triangle');
 
 var up = document.getElementsByClassName('up-triangle');
 
+var index;
+
 for (var i = 0; i < up.length; i++ ) {
     up[i].onclick = function () {
-        sortTableAsc();
         for (var i =0; i < up.length; i++ ){
             if (up[i].tagName === "DIV"){
                 bottom[i].classList.remove('red-bottom');
@@ -12,12 +13,17 @@ for (var i = 0; i < up.length; i++ ) {
             }
         }
         this.classList.add("red-up");
+        for (var i =0; i < up.length; i++){
+            if (up[i].classList.contains('red-up')){
+               index = i;
+            }
+        }
+        sortTableAsc(index);
     };
 }
 
 for (var y = 0; y < bottom.length; y++ ) {
     bottom[y].onclick = function () {
-        sortTableDesc()
         for (var i = 0; i < bottom.length; i++ ){
             if (bottom[i].tagName === "DIV"){
                 bottom[i].classList.remove("red-bottom");
@@ -25,10 +31,16 @@ for (var y = 0; y < bottom.length; y++ ) {
             }
         }
         this.classList.add("red-bottom");
+        for (var i =0; i < up.length; i++){
+            if (up[i].classList.contains('red-bottom')){
+                index = i;
+            }
+        }
+        sortTableDesc(index);
     };
 }
 
-function sortTableAsc() {
+function sortTableAsc(n) {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("my-table");
     switching = true;
@@ -38,11 +50,20 @@ function sortTableAsc() {
         rows = table.rows;
         for (i = 1; i < (rows.length-1); i++){
             shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[0];
-            y = rows[i + 1].getElementsByTagName("TD")[0];
-            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
-                shouldSwitch = true;
-                break;
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            console.log(typeof x.innerHTML);
+            if (typeof x.innerHTML === "string") {
+                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (typeof x.innerHTML === "number") {
+                if(Number (x.innerHTML) > Number(y.innerHTML)){
+                    shouldSwitch = true;
+                    break;
+                }
             }
         }
         if (shouldSwitch){
@@ -52,7 +73,7 @@ function sortTableAsc() {
     }
 }
 
-function sortTableDesc() {
+function sortTableDesc(n) {
     var table, rows, switching, i, x, y, shouldSwitch;
     table = document.getElementById("my-table");
     switching = true;
@@ -62,8 +83,8 @@ function sortTableDesc() {
         rows = table.rows;
         for (i = 1; i < (rows.length-1); i++){
             shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[0];
-            y = rows[i + 1].getElementsByTagName("TD")[0];
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
             if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
                 shouldSwitch = true;
                 break;

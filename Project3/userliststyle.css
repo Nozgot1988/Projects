@@ -13,7 +13,7 @@ body{
     color: rgb(129, 150, 160);
     margin: 20pt 40pt 40pt 90pt;
     background: rgb(242, 247, 248);
-    width: 610pt;
+    width: 650pt;
     height: 580pt;
     border: none;
 }
@@ -36,22 +36,22 @@ th{
 }
 
 .head-basic-info{
-    width: 220pt;
+    width: 180pt;
     height: 30pt;
 }
 
 .head-age{
-    width: 50pt;
+    width: 140pt;
     height: 30pt;
 }
 
 .head-city{
-    width: 50pt;
+    width: 100pt;
     height: 30pt;
 }
 
 .head-college{
-    width: 120pt;
+    width: 140pt;
     height: 30pt;
 }
 
@@ -127,6 +127,46 @@ button{
     height: 80px;
     background-color: #ffc107;
     color: white;
+}
+
+.up-triangle{
+    display: inline-block;
+    margin-left: 10pt;
+    width: 0;
+    height: 0;
+    border-bottom: 6pt solid black;
+    border-left: 3pt solid transparent;
+    border-right: 3pt solid transparent;
+    margin-right: 2pt;
+    cursor: pointer;
+}
+
+.up-triangle:hover{
+    border-bottom: 6pt solid red;
+}
+
+.red-up{
+    border-bottom: 6pt solid red;
+}
+
+.bottom-triangle{
+    display: inline-flex;
+    width: 0;
+    height: 0;
+    border-top: 6pt solid black;
+    border-left: 3pt solid transparent;
+    border-right: 3pt solid transparent;
+    margin-right: 2pt;
+    cursor: pointer;
+    margin-top: 2pt;
+}
+
+.bottom-triangle:hover{
+    border-top: 6pt solid red;
+}
+
+.red-bottom{
+    border-top: 6pt solid red;
 }
 
 
