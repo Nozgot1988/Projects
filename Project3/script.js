@@ -14,311 +14,236 @@ function deleteAction(index, btn) {
 }
 
 function addRole(index) {
-   var e = document.getElementById("Select1");""
+   var e = document.getElementById("Select1");
    var strUser = e.options[e.selectedIndex].value;
    users[index].role = strUser;
-   console.log(users[index].role);
 }
 
-var users;""
+function generateUserRow(user, index) {
 
-const table = document.getElementById("table-body");
+    let div = createNode('div'),
+        img = createNode('img'),
+        tr = createNode('tr'),
+        td = createNode('td'),
+        td1 = createNode('td'),
+        td2 = createNode('td'),
+        td3 = createNode('td'),
+        td4 = createNode('td'),
+        td5 = createNode('td'),
+        td6 = createNode('td'),
+        td7 = createNode("td");
 
-const url = 'https://randomuser.me/api/?results=10';
+    img.src=user.picture.thumbnail;
 
-fetch(url)
-    .then((resp) => resp.json())
-    .then(function (data) {
-        users = data.results;
-
-        return users.map(function (user, index) {
-
-            console.log(index);
-
-            let div = createNode('div'),
-                img = createNode('img'),
-                tr = createNode('tr'),
-                td = createNode('td'),
-                td1 = createNode('td'),
-                td2 = createNode('td'),
-                td3 = createNode('td'),
-                td4 = createNode('td'),
-                td5 = createNode('td'),
-                td6 = createNode('td'),
-                td7 = createNode("td");
-
-            img.src=user.picture.thumbnail;
-
-            td1.innerHTML=`${user.name.first}
+    td1.innerHTML=`${user.name.first}
             ${user.name.last}`;
 
-            div.innerHTML=`${user.email}`;
+    div.innerHTML=`${user.email}`;
 
-            td2.innerHTML=`${user.dob.date}`;
+    td2.innerHTML=`${user.dob.date}`;
 
-            td3.innerHTML=`${user.location.street}`;
+    td3.innerHTML=`${user.location.street}`;
 
-            td4.innerHTML=`${user.phone}`;
+    td4.innerHTML=`${user.phone}`;
 
-            td5.innerHTML=`<button onclick="deleteAction(` + index + `, this)">Delete</button>`;
+    td5.innerHTML=`<button onclick="deleteAction(` + index + `, this)">Delete</button>`;
 
-            td6.innerHTML=`${user.role}`;
+    td6.innerHTML=`${user.role}`;
 
-            td7.innerHTML=`<select onchange="addRole(` + index + `)" name="drop1" id="Select1">
+    td7.innerHTML=`<select onchange="addRole(` + index + `)" name="drop1" id="Select1">
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>`;
 
-            if (index != 0){
-                document.getElementsByTagName("TR")[index].setAttribute("draggable", "true");
-                document.getElementsByTagName("TR")[index].setAttribute("class", "listItem");
-            };
+    if (index !== 0){
+        document.getElementsByTagName("TR")[index].setAttribute("draggable", "true");
+        document.getElementsByTagName("TR")[index].setAttribute("class", "listItem");
+    }
 
-            append(td, img);
-            append(td1, div);
-            append(tr, td);
-            append(tr, td1);
-            append(tr, td2);
-            append(tr, td3);
-            append(tr, td4);
-            append(tr,td5);
-            append(tr,td7);
-            append(table, tr);
+    tr.addEventListener('dragstart', handleDragStart, false);
 
-            var listItems = document.querySelectorAll('.listItem');
+    tr.setAttribute("order-id", index);
 
-            var dragSrcEl = null;
+    tr.addEventListener('dragstart', handleDragStart, false);
+    tr.addEventListener('dragenter', handleDragEnter, false);
+    tr.addEventListener('dragover', handleDragOver, false);
+    tr.addEventListener('dragleave', handleDragLeave, false);
+    tr.addEventListener('drop', handleDrop, false);
+    tr.addEventListener('dragend', handleDragEnd, false);
 
-            function handleDragStart(e) {
-                this.className += " dragStartClass";
-                dragSrcEl = this;
+    append(td, img);
+    append(td1, div);
+    append(tr, td);
+    append(tr, td1);
+    append(tr, td2);
+    append(tr, td3);
+    append(tr, td4);
+    append(tr,td5);
+    append(tr,td7);
+    append(table, tr);
+}
 
-                e.dataTransfer.effectAllowed = 'move';
-                e.dataTransfer.setData('text/html', this.innerHTML);
-                e.dataTransfer.setDragClass("dataTransferClass");
-            }
-
-            function handleDragOver(e) {
-                // if (e.preventDefault) { not needed according to my question and anwers on : http://stackoverflow.com/questions/36920665/why-if-statement-with-e-preventdefault-drag-and-drop-javascript
-                e.preventDefault();
-                // }
-                e.dataTransfer.dropEffect = 'move'; // sets cursor
-                return false;
-
-            }
-
-            function handleDragEnter(e) {
-                // this / e.target is the current hover target.
-                this.classList.add('over');
-            }
-
-            function handleDragLeave(e) {
-                this.classList.remove('over'); // this / e.target is previous target element.
-            }
-
-            function handleDrop(e) {
-
-                var listItems = document.querySelectorAll('.listItem');
-                e.stopPropagation(); // stops the browser from redirecting.
-                dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
-                dragTargetOrderId = parseInt(this.getAttribute("order-id"));
-                var tempThis = this;
-
-
-                // Don't do anything if dropping the same column we're dragging.
-                // and
-                // check if only one difference and then do not execute
-                // && ((Math.abs(dragSrcOrderId - dragTargetOrderId)) != 1)
-                if (dragSrcEl != this) {
-                    // Set the source column's HTML to the HTML of the column we dropped on.
-                    var tempThis = this;
-
-                    function makeNewOrderIds(tempThis) {
-                        // check if up or down movement
-
-                        dragSrcEl.setAttribute("order-id", dragTargetOrderId);
-                        tempThis.setAttribute("order-id", dragTargetOrderId);
-
-                        //  find divs between old and new location and set new ids - different in up or down movement (if else)
-                        if (dragSrcOrderId < dragTargetOrderId) {
-                            for (i = dragSrcOrderId + 1; i < dragTargetOrderId; i++) {
-                                listItems[i].setAttribute("order-id", i - 1);
-                                // set new id src
-                                dragSrcEl.setAttribute("order-id", dragTargetOrderId - 1);
-                            }
-                        } else {
-                            for (i = dragTargetOrderId; i < dragSrcOrderId; i++) {
-                                listItems[i].setAttribute("order-id", i + 1);
-                                // set new id src
-                                dragSrcEl.setAttribute("order-id", dragTargetOrderId);
-
-                            }
-                        }
-
-                    };
-                    makeNewOrderIds(tempThis);
-
-
-                    dragSrcEl.classList.remove("dragStartClass");
-
-                    reOrder(listItems);
-
-
-                } else {
-
-                    dragSrcEl.classList.remove("dragStartClass");
-                    return false;
-
-                }
-            };
-
-            function handleDragEnd(e) {
-
-                for (i = 0; i < listItems.length; i++) {
-                    listItem = listItems[i];
-                    listItem.classList.remove('over');
-                }
-                dragSrcEl.classList.remove("dragStartClass");
-            }
-
-
-            for (i = 0; i < listItems.length; i++) {
-                listItem = listItems[i];
-
-                listItem.setAttribute("order-id", i);
-
-
-                listItem.addEventListener('dragstart', handleDragStart, false);
-                listItem.addEventListener('dragenter', handleDragEnter, false);
-                listItem.addEventListener('dragover', handleDragOver, false);
-                listItem.addEventListener('dragleave', handleDragLeave, false);
-                listItem.addEventListener('drop', handleDrop, false);
-                listItem.addEventListener('dragend', handleDragEnd, false);
-            }
-
-            function reOrder(listItems) {
-
-
-                var tempListItems = listItems;
-                tempListItems = Array.prototype.slice.call(tempListItems, 0);
-
-                tempListItems.sort(function(a, b) {
-                    return a.getAttribute("order-id") - b.getAttribute("order-id");
-                });
-
-
-
-                var parent = document.getElementById('table-body');
-                parent.innerHTML = "";
-
-                for (var i = 0, l = tempListItems.length; i < l; i++) {
-                    parent.appendChild(tempListItems[i]);
-                }
-            };
-        })
-
+var users;
+const table = document.getElementById("table-body");
+var dragSrcEl = null;
+const url = 'https://randomuser.me/api/?results=10';
+var count = 0;
+fetch(url)
+    .then((resp) => resp.json())
+    .then(function (data) {
+        users = data.results;
+        console.log(users);
+        users.map(function (user, index) {
+            generateUserRow(user, index);
+        });
+        setSortActions();
     });
 
-var bottom = document.getElementsByClassName('bottom-triangle');
+var previousArrow;
+function sorting(direction) {
+    let arrow = document.getElementById(direction);
+    if (previousArrow) {
+        previousArrow.classList.remove("red-up");
+        previousArrow.classList.remove("red-bottom");
+    }
+    if (direction.includes("up")) {
+        arrow.classList.add("red-up");
+    } else {
+        arrow.classList.add("red-bottom");
+    }
+    previousArrow = arrow;
 
-console.log(bottom);
-
-var up = document.getElementsByClassName('up-triangle');
-
-var index;
-
-for (var i = 0; i < up.length; i++ ) {
-    up[i].onclick = function () {
-        for (var y = 0; y < up.length; y++ ){
-            if (up[y].tagName === "DIV"){
-                bottom[y].classList.remove('red-bottom');
-                up[y].classList.remove("red-up");
-            }
+    if (direction.includes("0")) {
+        if (direction.includes("up")) {
+            users.sort(sortByNamesUp);
+        } else {
+            users.sort(sortByNamesDown);
         }
-        this.classList.add("red-up");
-        for (var i =0; i < up.length; i++){
-            if (up[i].classList.contains('red-up')){
-                index = i;
-            }
+    }
+
+    if (direction.includes("1")){
+        if (direction.includes("up")) {
+            users.sort(sortByDataUp);
+        } else {
+            users.sort(sortByDataDown);
         }
-        sortTableAsc(index);
-    };
+    }
+
+    if (direction.includes("2")){
+        if (direction.includes("up")) {
+            users.sort(sortByAddressUp);
+        }
+        else {
+            users.sort(sortByDataDown);
+        }
+    }
+
+    if (direction.includes("3")){
+        if (direction.includes("up")) {
+            users.sort(sortByPhoneUp);
+        } else {
+            users.sort(sortByPhoneDown);
+        }
+    }
+
+    clearList();
+    users.map(function (user, index) {
+        generateUserRow(user, index);
+    });
 }
 
-for (var y = 0; y < bottom.length; y++ ) {
-    bottom[y].onclick = function () {
-        for (var i = 0; i < bottom.length; i++ ){
-            if (bottom[i].tagName === "DIV"){
-                bottom[i].classList.remove("red-bottom");
-                up[i].classList.remove('red-up');
-            }
-        }
-        this.classList.add("red-bottom");
-        for (var i =0; i < up.length; i++){
-            if (up[i].classList.contains('red-bottom')){
-                index = i;
-            }
-        }
-        sortTableDesc(index);
-    };
-}
+function clearList() {
+    var element = document.getElementsByTagName("TR"), index;
 
-function sortTableAsc(n) {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("user-table");
-    switching = true;
-
-    while (switching){
-        switching = false;
-        rows = table.rows;
-        for (i = 1; i < (rows.length-1); i++){
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
-            console.log(typeof x.innerHTML);
-            if (typeof x.innerHTML === "string") {
-                if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-            if (typeof x.innerHTML === "number") {
-                if(Number (x.innerHTML) > Number(y.innerHTML)){
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-        }
-        if (shouldSwitch){
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-        }
+    for (index = element.length - 1; index > 0; index--) {
+        element[index].parentNode.removeChild(element[index]);
     }
 }
 
-function sortTableDesc(n) {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("user-table");
-    switching = true;
+function sortByNamesUp(a, b) {
+    if (a.name.last < b.name.last)
+        return -1;
+    if (a.name.last > b.name.last)
+        return 1;
+    return 0;
+}
 
-    while (switching){
-        switching = false;
-        rows = table.rows;
-        for (i = 1; i < (rows.length-1); i++){
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
-            if(x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()){
-                shouldSwitch = true;
-                break;
-            }
-        }
-        if (shouldSwitch){
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-        }
+function sortByDateUp(a, b) {
+    if (a.dob.date < b.dob.date)
+        return -1;
+    if (a.dob.date > b.dob.date)
+        return 1;
+    return 0;
+}
+
+function sortByAddressUp(a, b) {
+    if (a.location.street < b.location.street)
+        return -1;
+    if (a.location.street > b.location.street)
+        return 1;
+    return 0;
+}
+
+function sortByPhoneUp(a, b) {
+    if (a.phone < b.phone)
+        return -1;
+    if (a.phone > b.phone)
+        return 1;
+    return 0;
+}
+
+function sortByNamesDown(a, b) {
+    if (a.name.last > b.name.last)
+        return -1;
+    if (a.name.last < b.name.last)
+        return 1;
+    return 0;
+}
+
+function sortByDateDown(a, b) {
+    if (a.dob.date > b.dob.date)
+        return -1;
+    if (a.dob.date < b.dob.date)
+        return 1;
+    return 0;
+}
+
+function sortByAddressDown(a, b) {
+    if (a.location.street > b.location.street)
+        return -1;
+    if (a.location.street < b.location.street)
+        return 1;
+    return 0;
+}
+
+function sortByPhoneDown(a, b) {
+    if (a.phone > b.phone)
+        return -1;
+    if (a.phone < b.phone)
+        return 1;
+    return 0;
+}
+
+
+
+function setSortActions() {
+    var bottom = document.getElementsByClassName('bottom-triangle');
+    var up = document.getElementsByClassName('up-triangle');
+    for (var i = 0; i < up.length; i++ ) {
+        let elementId = up[i].id;
+        up[i].onclick = function() {
+            sorting(elementId)
+        };
+    }
+    for (var i = 0; i < bottom.length; i++ ) {
+        let elementId = bottom[i].id;
+        bottom[i].onclick = function() {sorting(elementId)};
     }
 }
+
+
+
+
 
 
 
