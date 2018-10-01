@@ -115,17 +115,17 @@ function sorting(direction) {
 
     if (direction.includes("0")) {
         if (direction.includes("up")) {
-            users.sort(sortByNamesUp);
+            users = bubbleSortUp(users)
         } else {
-            users.sort(sortByNamesDown);
+            users = bubbleSortDown(users)
         }
     }
 
     if (direction.includes("1")){
         if (direction.includes("up")) {
-            users.sort(sortByDataUp);
+            users = exchangeSortUp(users)
         } else {
-            users.sort(sortByDataDown);
+            users.sort(sortByDateDown);
         }
     }
 
@@ -241,7 +241,48 @@ function setSortActions() {
     }
 }
 
+function bubbleSortUp(arr) {
+    for (var i = 0; i < arr.length; i++){
+        for (var y = i-1; y >=0; y-- ){
+            if(arr[y].name.last > arr[y + 1].name.last){
+                var a = arr[y];
+                arr[y] = arr[y + 1];
+                arr[y + 1] = a;
+            }
+        }
+    }
+    return arr;
+}
 
+function bubbleSortDown(arr) {
+    for (var i = 0; i < arr.length; i++){
+        for (var y = i-1; y >=0; y-- ){
+            if(arr[y].name.last < arr[y + 1].name.last){
+                var a = arr[y];
+                arr[y] = arr[y + 1];
+                arr[y + 1] = a;
+            }
+        }
+    }
+    return arr;
+}
+
+function exchangeSortUp(arr) {
+    var index;
+    for (var i = 0; i < arr.length; i++){
+        var min = arr[i];
+        for (var y = i; y < arr.length; y++){
+            if (min.dob.date > arr[y].dob.date){
+                min = arr[y];
+                index = y;
+            }
+        }
+        var temp = arr[i];
+        arr[i] = min;
+        arr[index] = temp;
+    }
+    return arr;
+}
 
 
 
