@@ -64,34 +64,36 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="26" />
-          <entry key="html" value="26" />
+          <entry key="css" value="27" />
+          <entry key="html" value="27" />
           <entry key="jpg" value="1" />
-          <entry key="js" value="19" />
+          <entry key="js" value="20" />
           <entry key="png" value="8" />
+          <entry key="rnc" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="26" />
-          <entry key="HTML" value="26" />
+          <entry key="CSS" value="27" />
+          <entry key="HTML" value="27" />
           <entry key="Image" value="9" />
-          <entry key="JavaScript" value="19" />
+          <entry key="JavaScript" value="20" />
+          <entry key="RNG Compact" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="6382" />
-          <entry key="html" value="3004" />
-          <entry key="js" value="10386" />
+          <entry key="css" value="6391" />
+          <entry key="html" value="3065" />
+          <entry key="js" value="10842" />
           <entry key="txt" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="6382" />
-          <entry key="HTML" value="3060" />
-          <entry key="JavaScript" value="10330" />
+          <entry key="CSS" value="6391" />
+          <entry key="HTML" value="3121" />
+          <entry key="JavaScript" value="10786" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -101,11 +103,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Project3/userlist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+            <state relative-caret-position="388">
+              <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -113,26 +115,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project3/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+            <state relative-caret-position="241">
+              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project3/style.css">
+        <entry file="file://$PROJECT_DIR$/Project3/userliststyle1.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
-              <caret line="123" column="15" lean-forward="true" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
+            <state relative-caret-position="514">
+              <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project5/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="55" />
+            <state relative-caret-position="374">
+              <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -141,7 +143,7 @@
         <entry file="file://$PROJECT_DIR$/Project3/userliststyle.css">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret selection-end-line="169" selection-end-column="1" />
+              <caret selection-end-line="6" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -149,8 +151,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Project3/dragAndDrop.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+            <state relative-caret-position="540">
+              <caret line="153" column="20" lean-forward="true" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -175,7 +177,12 @@
       <find>apply</find>
       <find>dragSrcEl</find>
       <find>users1</find>
+      <find>dataTransferClass</find>
+      <find>handleDrop</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/Project3</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -195,14 +202,14 @@
         <option value="$PROJECT_DIR$/Project3/style.css" />
         <option value="$PROJECT_DIR$/Project3/js.js" />
         <option value="$PROJECT_DIR$/Project3/userliststyle.css" />
-        <option value="$PROJECT_DIR$/Project3/dragAndDrop.js" />
         <option value="$PROJECT_DIR$/Project5/index.html" />
         <option value="$PROJECT_DIR$/Project5/style.css" />
-        <option value="$PROJECT_DIR$/Project3/userliststyle1.css" />
         <option value="$PROJECT_DIR$/Project3/userTable1.js" />
+        <option value="$PROJECT_DIR$/Project5/script.js" />
+        <option value="$PROJECT_DIR$/Project3/dragAndDrop.js" />
+        <option value="$PROJECT_DIR$/Project3/userliststyle1.css" />
         <option value="$PROJECT_DIR$/Project3/script.js" />
         <option value="$PROJECT_DIR$/Project3/userlist.html" />
-        <option value="$PROJECT_DIR$/Project5/script.js" />
       </list>
     </option>
   </component>
@@ -318,7 +325,7 @@
       <workItem from="1537938903094" duration="20857000" />
       <workItem from="1538029483590" duration="23027000" />
       <workItem from="1538114718610" duration="24880000" />
-      <workItem from="1538372740131" duration="12297000" />
+      <workItem from="1538372740131" duration="20011000" />
     </task>
     <task id="LOCAL-00001" summary="Finally">
       <created>1537530595504</created>
@@ -331,7 +338,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140579000" />
+    <option name="totallyTimeSpent" value="148293000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -350,16 +357,16 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.3298611" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.544406" visible="true" weight="0.3298611" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4982699" weight="0.3298611" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32970297" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.455594" side_tool="true" weight="0.3298611" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5017301" side_tool="true" weight="0.3298611" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -468,55 +475,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project3/userliststyle1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="746">
-          <caret line="136" column="20" lean-forward="true" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Project3/userTable1.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Project3/userliststyle.css">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/core-scripting.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="169" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project3/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="123" column="15" lean-forward="true" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project3/userlist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Project3/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="87" column="54" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project3/dragAndDrop.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+        <state relative-caret-position="540">
+          <caret line="153" column="20" lean-forward="true" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project3/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1218">
+          <caret line="123" column="15" lean-forward="true" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project3/userliststyle1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Project5/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="20" selection-start-line="20" selection-end-line="20" selection-end-column="55" />
+        <state relative-caret-position="374">
+          <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project3/userliststyle.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project3/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project3/userlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="47" column="25" lean-forward="true" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
         </state>
       </provider>
     </entry>

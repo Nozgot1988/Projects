@@ -4,13 +4,13 @@ function handleDragStart(e) {
 
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this.innerHTML);
-    e.dataTransfer.setDragClass("dataTransferClass");
 }
 
 function handleDragOver(e) {
     // if (e.preventDefault) { not needed according to my question and anwers on : http://stackoverflow.com/questions/36920665/why-if-statement-with-e-preventdefault-drag-and-drop-javascript
     e.preventDefault();
     // }
+    console.log("over....")
     e.dataTransfer.dropEffect = 'move'; // sets cursor
     return false;
 
@@ -19,6 +19,7 @@ function handleDragOver(e) {
 function handleDragEnter(e) {
     // this / e.target is the current hover target.
     this.classList.add('over');
+    console.log("enter...")
 }
 
 function handleDragLeave(e) {
@@ -26,7 +27,6 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
-
     var listItems = document.querySelectorAll('.listItem');
     e.stopPropagation(); // stops the browser from redirecting.
     dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
@@ -106,4 +106,55 @@ function reOrder(listItems) {
     for (var i = 0, l = tempListItems.length; i < l; i++) {
         parent.appendChild(tempListItems[i]);
     }
+}
+
+function dropOverride(e) {
+    e.stopPropagation(); // stops the browser from redirecting.
+    dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
+    var clone = users[dragSrcOrderId];
+
+    let div = createNode('div'),
+        img = createNode('img'),
+        tr = createNode('tr'),
+        td = createNode('td'),
+        td1 = createNode('td'),
+        td2 = createNode('td'),
+        td3 = createNode('td'),
+        td4 = createNode('td'),
+        td5 = createNode('td'),
+        td6 = createNode('td'),
+        td7 = createNode("td");
+
+    img.src=clone.picture.thumbnail;
+
+    td1.innerHTML=`${clone.name.first}
+            ${clone.name.last}`;
+
+    div.innerHTML=`${clone.email}`;
+
+    td2.innerHTML=`${clone.dob.date}`;
+
+    td3.innerHTML=`${clone.location.street}`;
+
+    td4.innerHTML=`${clone.phone}`;
+
+    // td5.innerHTML=`<button onclick="deleteAction(` + index + `, this)">Delete</button>`;
+
+    td6.innerHTML=`${clone.role}`;
+
+    // td7.innerHTML=`<select onchange="addRole(` + index + `)" name="drop1" id="Select1">
+    //                         <option value="user">User</option>
+    //                         <option value="admin">Admin</option>
+    //                     </select>`;
+
+    append(td, img);
+    append(td1, div);
+    append(tr, td);
+    append(tr, td1);
+    append(tr, td2);
+    append(tr, td3);
+    append(tr, td4);
+    // append(tr,td5);
+    // append(tr,td7);
+    append(table1, tr);
 }

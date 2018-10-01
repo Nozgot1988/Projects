@@ -68,8 +68,14 @@ function generateUserRow(user, index) {
     tr.addEventListener('dragenter', handleDragEnter, false);
     tr.addEventListener('dragover', handleDragOver, false);
     tr.addEventListener('dragleave', handleDragLeave, false);
-    tr.addEventListener('drop', handleDrop, false);
+    // tr.addEventListener('drop', handleDrop, false);
     tr.addEventListener('dragend', handleDragEnd, false);
+
+    table1.addEventListener('dragstart', handleDragStart, false);
+    table1.addEventListener('dragenter', handleDragEnter, false);
+    table1.addEventListener('dragover', handleDragOver, false);
+    table1.addEventListener('dragleave', handleDragLeave, false);
+    table1.addEventListener("drop", dropOverride, false);
 
     append(td, img);
     append(td1, div);
@@ -81,11 +87,14 @@ function generateUserRow(user, index) {
     append(tr,td5);
     append(tr,td7);
     append(table, tr);
+
 }
 
 var users;
 const table = document.getElementById("table-body");
-const table1 = document.getElementById("table-body1");
+const table1 = document.getElementById("user-table1");
+
+
 var dragSrcEl = null;
 const url = 'https://randomuser.me/api/?results=10';
 var count = 0;
@@ -283,6 +292,7 @@ function exchangeSortUp(arr) {
     }
     return arr;
 }
+
 
 
 
