@@ -1,0 +1,163 @@
+
+.container1{
+    position: relative;
+    top: 25%;
+    left: 25%;
+    color: rgb(129, 150, 160);
+    margin: 20pt 40pt 40pt 90pt;
+    background: rgb(242, 247, 248);
+    width: 650pt;
+    height: 580pt;
+    border: none;
+}
+
+.user-table1{
+    margin:0 10pt 0 20pt;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    position: absolute;
+}
+
+th{
+    text-align: left;
+
+}
+
+.head-photo1{
+    width: 50pt;
+    height: 30pt;
+}
+
+.head-basic-info1{
+    width: 180pt;
+    height: 30pt;
+}
+
+.head-age1{
+    width: 140pt;
+    height: 30pt;
+}
+
+.head-city1{
+    width: 100pt;
+    height: 30pt;
+}
+
+.head-college1{
+    width: 140pt;
+    height: 30pt;
+}
+
+td{
+    height: 30pt;
+    background: transparent;
+}
+
+tbody >tr {
+    background-color: white;
+}
+
+tbody >tr:hover{
+    cursor: pointer;
+    background: rgb(229, 242, 248);
+}
+
+img{
+    border-radius: 50%;
+}
+
+div{
+    color: rgb(202, 210, 215);
+}
+
+button{
+    width: 40pt;
+    height: 20pt;
+    border-radius: 3pt;
+
+}
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+
+}
+
+.listItem{
+    padding: 10px 10px 10px 10px;
+    margin: 3px;
+    border-top: thick solid white;
+    border-top-width: 1px;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.dragStartClass {
+    opacity: 0;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+
+}
+
+.over {
+
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    height: 80px;
+    background-color: #ffc107;
+    color: white;
+}
+
+.up-triangle1{
+    display: inline-block;
+    margin-left: 10pt;
+    width: 0;
+    height: 0;
+    border-bottom: 6pt solid black;
+    border-left: 3pt solid transparent;
+    border-right: 3pt solid transparent;
+    margin-right: 2pt;
+    cursor: pointer;
+}
+
+.up-triangle1:hover{
+    border-bottom: 6pt solid red;
+}
+
+.red-up{
+    border-bottom: 6pt solid red;
+}
+
+.bottom-triangle1{
+    display: inline-flex;
+    width: 0;
+    height: 0;
+    border-top: 6pt solid black;
+    border-left: 3pt solid transparent;
+    border-right: 3pt solid transparent;
+    margin-right: 2pt;
+    cursor: pointer;
+    margin-top: 2pt;
+}
+
+.bottom-triangle1:hover{
+    border-top: 6pt solid red;
+}
+
+.red-bottom{
+    border-top: 6pt solid red;
+}

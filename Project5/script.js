@@ -1,16 +1,46 @@
-var arr = [10, 25, 154, 47, 25, 5];
-var index;
-for (var i = 0; i < arr.length; i++){
-    var min = arr[i];
-    for (var y = i; y < arr.length; y++){
-        if (min > arr[y]){
-             min = arr[y];
-             index = y;
-        }
-    }
-    var temp = arr[i];
-    arr[i] = min;
-    arr[index] = temp;
+const fill = document.querySelector('.fill');
+const empties = document.querySelectorAll('.empty');
+
+//Fill listeners
+
+fill.addEventListener('dragstart', dragStart);
+fill.addEventListener('dragend', dragEnd);
+
+//Loop through empties and call drag events
+for (const empty of empties ){
+    empty.addEventListener('dragover', dragOver);
+    empty.addEventListener('dragenter', dragEnter);
+    empty.addEventListener('dragleave', dragLeave);
+    empty.addEventListener('drop', dragDrop);
 }
 
-console.log(arr);
+//Drag Functions
+
+function dragStart() {
+    this.className += ' hold';
+    setTimeout(()=> (this.className = 'invisible'), 0);
+}
+
+function dragEnd() {
+    this.className = 'fill';
+}
+
+function dragOver(e) {
+    e.preventDefault();
+}
+
+function dragEnter(e) {
+    e.preventDefault();
+    this.className += ' hovered';
+}
+
+function dragLeave() {
+    this.className = 'empty';
+}
+
+function dragDrop() {
+    var clone = document.getElementById('fill').cloneNode(true);
+    this.className = 'empty';
+    this.append(clone);
+}
+

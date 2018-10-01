@@ -1,48 +1,35 @@
-table {
-    border: 1pt solid black;
-}
-td{
-    width: 80pt;
-    height: 30pt;
-    border: 1pt solid black;
+body{
+    background: darksalmon;
 }
 
-.up-triangle{
-    width: 0;
-    height: 0;
-    border-bottom: 10pt solid black;
-    border-left: 5pt solid transparent;
-    border-right: 5pt solid transparent;
-    float: right;
-    margin-right: 2pt;
+.fill{
+    background-image: url('http://source.unsplash.com/random/150x150');
+    position: relative;
+    height: 150px;
+    width: 150pt;
+    top: 5px;
+    left: 5px;
     cursor: pointer;
 }
 
-.up-triangle:hover{
-    border-bottom: 10pt solid red;
+.empty{
+    display: inline-block;
+    height: 160px;
+    width: 160px;
+    margin: 10px;
+    border: 3px salmon solid;
+    background-color: white;
 }
 
-.red-up{
-    border-bottom: 10pt solid red;
+.hold{
+    border: solid #ccc 4px;
+}
+.hovered{
+    background:#f4f4f4;
+    border-style: dashed;
 }
 
-
-.bottom-triangle{
-    width: 0;
-    height: 0;
-    border-top: 10pt solid black;
-    border-left: 5pt solid transparent;
-    border-right: 5pt solid transparent;
-    margin-right: 2pt;
-    cursor: pointer;
-    margin-top: 3pt;
-    margin-left: 70pt;
+.invisible{
+    display: none;
 }
 
-.bottom-triangle:hover{
-    border-top: 10pt solid red;
-}
-
-.red-bottom{
-    border-top: 10pt solid red;
-}

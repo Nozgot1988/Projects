@@ -85,6 +85,7 @@ function generateUserRow(user, index) {
 
 var users;
 const table = document.getElementById("table-body");
+const table1 = document.getElementById("table-body1");
 var dragSrcEl = null;
 const url = 'https://randomuser.me/api/?results=10';
 var count = 0;
@@ -92,7 +93,6 @@ fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
         users = data.results;
-        console.log(users);
         users.map(function (user, index) {
             generateUserRow(user, index);
         });
@@ -134,7 +134,7 @@ function sorting(direction) {
             users.sort(sortByAddressUp);
         }
         else {
-            users.sort(sortByDataDown);
+            users.sort(sortByAddressDown);
         }
     }
 

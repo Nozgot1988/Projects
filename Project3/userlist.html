@@ -5,6 +5,7 @@
     <title>Users list</title>
 
     <link rel="stylesheet" href="userliststyle.css">
+    <link rel="stylesheet" href="userliststyle1.css">
 </head>
 <body>
     <div class="container">
@@ -26,6 +27,26 @@
             </tbody>
         </table>
     </div>
+    <div class="container1" ondrop="drop(event)">
+        <table class="user-table1" id="user-table1">
+            <thead>
+            <tr class="head1">
+                <th class="photo1"></th>
+                <th class="head-basic-info1">BASIC INFO<div class="up-triangle1" id="up4"></div>
+                    <div class="bottom-triangle1" id="down4"></div></th>
+                <th class="head-age1">BIRTHDAY DATE<div class="up-triangle1" id="up5"></div>
+                    <div class="bottom-triangle1" id="down5"></div></th>
+                <th class="head-city1">ADDRESS<div class="up-triangle" id="up6"></div>
+                    <div class="bottom-triangle1" id="down6"></div></th>
+                <th class="head-college1">PHONE NUMBER<div class="up-triangle1" id="up7"></div>
+                    <div class="bottom-triangle1" id="down7"></div></th>
+            </tr>
+            </thead>
+            <tbody class="table-body1" id="table-body1">
+            </tbody>
+        </table>
+    </div>
+
 </body>
 <script src="script.js"></script>
 <script src="dragAndDrop.js"></script>
