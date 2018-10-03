@@ -57,21 +57,21 @@ function generateUserRow(user, index) {
 
     tr.setAttribute("draggable", "true");
     tr.setAttribute("class", "listItem");
-
+    tr.setAttribute("class", "switch");
     tr.setAttribute("order-id", index);
 
     tr.addEventListener('dragstart', handleDragStart, false);
-    tr.addEventListener('dragenter', handleDragEnter, false);
-    tr.addEventListener('dragover', handleDragOver, false);
-    tr.addEventListener('dragleave', handleDragLeave, false);
-    tr.addEventListener('dragend', handleDragEnd, false);
+    // tr.addEventListener('dragenter', handleDragEnter, false);
+    // tr.addEventListener('dragover', handleDragOver, false);
+    // tr.addEventListener('dragleave', handleDragLeave, false);
+    // tr.addEventListener('dragend', handleDragEnd, false);
+
 
     table1.addEventListener('dragstart', handleDragStart, false);
-    table1.addEventListener('dragenter', handleDragEnter, false);
-    table1.addEventListener('dragover', handleDragOver, false);
-    table1.addEventListener('dragleave', handleDragLeave, false);
     table1.addEventListener('dragend', handleDragEnd, false);
-    table1.addEventListener("drop", dropOverride, false);
+    table1.addEventListener('dragover', handleDragOver, false);
+    table1.addEventListener('drop', handleDrop, false);
+
 
     append(td, img);
     append(td1, div);

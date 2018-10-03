@@ -1,15 +1,16 @@
 function handleDragStart(e) {
-    this.className += " dragStartClass";
+    // this.className += " dragStartClass";
     dragSrcEl = this;
 
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this.innerHTML);
+    console.log("move");
 }
 
 function handleDragOver(e) {
-    // if (e.preventDefault) { not needed according to my question and anwers on : http://stackoverflow.com/questions/36920665/why-if-statement-with-e-preventdefault-drag-and-drop-javascript
-    e.preventDefault();
-    // }
+   if (e.preventDefault){
+       e.preventDefault();
+   }
     console.log("over....")
     e.dataTransfer.dropEffect = 'move'; // sets cursor
     return false;
@@ -27,57 +28,15 @@ function handleDragLeave(e) {
 }
 
 function handleDrop(e) {
-    var listItems = document.querySelectorAll('.listItem');
-    e.stopPropagation(); // stops the browser from redirecting.
-    dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
-    dragTargetOrderId = parseInt(this.getAttribute("order-id"));
-    var tempThis = this;
-
-
-    // Don't do anything if dropping the same column we're dragging.
-    // and
-    // check if only one difference and then do not execute
-    // && ((Math.abs(dragSrcOrderId - dragTargetOrderId)) != 1)
-    if (dragSrcEl != this) {
-        // Set the source column's HTML to the HTML of the column we dropped on.
-        var tempThis = this;
-
-        function makeNewOrderIds(tempThis) {
-            // check if up or down movement
-
-            dragSrcEl.setAttribute("order-id", dragTargetOrderId);
-            tempThis.setAttribute("order-id", dragTargetOrderId);
-
-            //  find divs between old and new location and set new ids - different in up or down movement (if else)
-            if (dragSrcOrderId < dragTargetOrderId) {
-                for (i = dragSrcOrderId + 1; i < dragTargetOrderId; i++) {
-                    listItems[i].setAttribute("order-id", i - 1);
-                    // set new id src
-                    dragSrcEl.setAttribute("order-id", dragTargetOrderId - 1);
-                }
-            } else {
-                for (i = dragTargetOrderId; i < dragSrcOrderId; i++) {
-                    listItems[i].setAttribute("order-id", i + 1);
-                    // set new id src
-                    dragSrcEl.setAttribute("order-id", dragTargetOrderId);
-
-                }
-            }
-
-        };
-        makeNewOrderIds(tempThis);
-
-
-        dragSrcEl.classList.remove("dragStartClass");
-
-        reOrder(listItems);
-
-
+    if (dragSrcEl.classList.contains("switch")) {
+        createNewTabke();
     } else {
-
-        dragSrcEl.classList.remove("dragStartClass");
-        return false;
-
+        e.stopPropagation();
+        if (dragSrcEl !== this) {
+            // Set the source column's HTML to the HTML of the columnwe dropped on.
+            dragSrcEl.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData('text/html');
+        }
     }
 };
 
@@ -100,7 +59,7 @@ function reOrder(listItems) {
 
 
 
-    var parent = document.getElementById('table-body');
+    var parent = document.getElementById('user-table1');
     parent.innerHTML = "";
 
     for (var i = 0, l = tempListItems.length; i < l; i++) {
@@ -110,63 +69,68 @@ function reOrder(listItems) {
 
 var index = 0;
 function dropOverride(e) {
+    if (dragSrcEl.classList.contains("switch")){
+        createNewTabke();
+    } else if (this.classList.contains("switch1")){
+        handleDragStart();
+    console.log("other switch");
+    if (dragSrcEl != this) {
+        // Set the source column's HTML to the HTML of the columnwe dropped on.
+        dragSrcEl.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+    }
+}
 
-    e.stopPropagation();
+}
+
+function createNewTabke() {
     dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
-    var clone = users[dragSrcOrderId];
-    if (index < 10){
+    if (index < 10) {
+        let div = createNode('div'),
+            img = createNode('img'),
+            tr = createNode('tr'),
+            td = createNode('td'),
+            td1 = createNode('td'),
+            td2 = createNode('td'),
+            td3 = createNode('td'),
+            td4 = createNode('td'),
+            td5 = createNode('td'),
+            td6 = createNode('td'),
+            td7 = createNode("td");
 
+        tr.setAttribute("draggable", "true");
 
-    let div = createNode('div'),
-        img = createNode('img'),
-        tr = createNode('tr'),
-        td = createNode('td'),
-        td1 = createNode('td'),
-        td2 = createNode('td'),
-        td3 = createNode('td'),
-        td4 = createNode('td'),
-        td5 = createNode('td'),
-        td6 = createNode('td'),
-        td7 = createNode("td");
+        tr.className += " listItem";
 
-    tr.setAttribute("draggable", "true");
+        tr.className += " order-id";
 
-    tr.className += " listItem";
+        tr.className += " switch1";
 
-    tr.className += " order-id";
+        tr.setAttribute("order-id", index);
 
-    tr.setAttribute("order-id", index);
+        img.src = users[dragSrcOrderId].picture.thumbnail;
 
-    img.src=clone.picture.thumbnail;
+        td1.innerHTML = `${users[dragSrcOrderId].name.first}
+            ${users[dragSrcOrderId].name.last}`;
 
-    td1.innerHTML=`${clone.name.first}
-            ${clone.name.last}`;
+        div.innerHTML = `${users[dragSrcOrderId].email}`;
 
-    div.innerHTML=`${clone.email}`;
+        td2.innerHTML = `${users[dragSrcOrderId].dob.date}`;
 
-    td2.innerHTML=`${clone.dob.date}`;
+        td3.innerHTML = `${users[dragSrcOrderId].location.street}`;
 
-    td3.innerHTML=`${clone.location.street}`;
+        td4.innerHTML = `${users[dragSrcOrderId].phone}`;
 
-    td4.innerHTML=`${clone.phone}`;
+        td6.innerHTML = `${users[dragSrcOrderId].role}`;
 
-    td6.innerHTML=`${clone.role}`;
-
-    table1.addEventListener('dragstart', handleDragStart, false);
-    table1.addEventListener('dragenter', handleDragEnter, false);
-    table1.addEventListener('dragover', handleDragOver, false);
-    table1.addEventListener('dragleave', handleDragLeave, false);
-    table1.addEventListener("drop", dropOverride, false);
-
-
-    append(td, img);
-    append(td1, div);
-    append(tr, td);
-    append(tr, td1);
-    append(tr, td2);
-    append(tr, td3);
-    append(tr, td4);
-    append(table1, tr);
-    index++;
+        append(td, img);
+        append(td1, div);
+        append(tr, td);
+        append(tr, td1);
+        append(tr, td2);
+        append(tr, td3);
+        append(tr, td4);
+        append(table1, tr);
+        index++;
     }
 }
