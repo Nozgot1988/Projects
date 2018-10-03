@@ -55,12 +55,8 @@ function generateUserRow(user, index) {
                             <option value="admin">Admin</option>
                         </select>`;
 
-    if (index !== 0){
-        document.getElementsByTagName("TR")[index].setAttribute("draggable", "true");
-        document.getElementsByTagName("TR")[index].setAttribute("class", "listItem");
-    }
-
-    tr.addEventListener('dragstart', handleDragStart, false);
+    tr.setAttribute("draggable", "true");
+    tr.setAttribute("class", "listItem");
 
     tr.setAttribute("order-id", index);
 
@@ -68,13 +64,13 @@ function generateUserRow(user, index) {
     tr.addEventListener('dragenter', handleDragEnter, false);
     tr.addEventListener('dragover', handleDragOver, false);
     tr.addEventListener('dragleave', handleDragLeave, false);
-    // tr.addEventListener('drop', handleDrop, false);
     tr.addEventListener('dragend', handleDragEnd, false);
 
     table1.addEventListener('dragstart', handleDragStart, false);
     table1.addEventListener('dragenter', handleDragEnter, false);
     table1.addEventListener('dragover', handleDragOver, false);
     table1.addEventListener('dragleave', handleDragLeave, false);
+    table1.addEventListener('dragend', handleDragEnd, false);
     table1.addEventListener("drop", dropOverride, false);
 
     append(td, img);
@@ -105,7 +101,7 @@ fetch(url)
         users.map(function (user, index) {
             generateUserRow(user, index);
         });
-        setSortActions();
+        // setSortActions();
     });
 
 var previousArrow;

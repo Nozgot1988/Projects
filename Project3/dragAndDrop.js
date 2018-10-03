@@ -108,10 +108,14 @@ function reOrder(listItems) {
     }
 }
 
+var index = 0;
 function dropOverride(e) {
+
     e.stopPropagation();
     dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
     var clone = users[dragSrcOrderId];
+    if (index < 10){
+
 
     let div = createNode('div'),
         img = createNode('img'),
@@ -124,6 +128,14 @@ function dropOverride(e) {
         td5 = createNode('td'),
         td6 = createNode('td'),
         td7 = createNode("td");
+
+    tr.setAttribute("draggable", "true");
+
+    tr.className += " listItem";
+
+    tr.className += " order-id";
+
+    tr.setAttribute("order-id", index);
 
     img.src=clone.picture.thumbnail;
 
@@ -155,4 +167,6 @@ function dropOverride(e) {
     append(tr, td3);
     append(tr, td4);
     append(table1, tr);
+    index++;
+    }
 }
