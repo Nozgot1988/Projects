@@ -109,7 +109,7 @@ function reOrder(listItems) {
 }
 
 function dropOverride(e) {
-    e.stopPropagation(); // stops the browser from redirecting.
+    e.stopPropagation();
     dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
     var clone = users[dragSrcOrderId];
 
@@ -138,14 +138,14 @@ function dropOverride(e) {
 
     td4.innerHTML=`${clone.phone}`;
 
-    // td5.innerHTML=`<button onclick="deleteAction(` + index + `, this)">Delete</button>`;
-
     td6.innerHTML=`${clone.role}`;
 
-    // td7.innerHTML=`<select onchange="addRole(` + index + `)" name="drop1" id="Select1">
-    //                         <option value="user">User</option>
-    //                         <option value="admin">Admin</option>
-    //                     </select>`;
+    table1.addEventListener('dragstart', handleDragStart, false);
+    table1.addEventListener('dragenter', handleDragEnter, false);
+    table1.addEventListener('dragover', handleDragOver, false);
+    table1.addEventListener('dragleave', handleDragLeave, false);
+    table1.addEventListener("drop", dropOverride, false);
+
 
     append(td, img);
     append(td1, div);
@@ -154,7 +154,5 @@ function dropOverride(e) {
     append(tr, td2);
     append(tr, td3);
     append(tr, td4);
-    // append(tr,td5);
-    // append(tr,td7);
     append(table1, tr);
 }
