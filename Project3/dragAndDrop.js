@@ -1,6 +1,8 @@
 function handleDragStart(e) {
     // this.className += " dragStartClass";
     dragSrcEl = this;
+    dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
+    console.log(dragSrcEl);
 
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this.innerHTML);
@@ -8,10 +10,9 @@ function handleDragStart(e) {
 }
 
 function handleDragOver(e) {
-   if (e.preventDefault){
-       e.preventDefault();
-   }
-    console.log("over....")
+    e.preventDefault();
+    console.log("over....");
+    console.log(newUsers);
     e.dataTransfer.dropEffect = 'move'; // sets cursor
     return false;
 
@@ -27,21 +28,44 @@ function handleDragLeave(e) {
     this.classList.remove('over'); // this / e.target is previous target element.
 }
 
-function handleDrop(e) {
-    if (dragSrcEl.classList.contains("switch")) {
-        createNewTabke();
-    } else {
-        e.stopPropagation();
+function handleDropInsideOfTheTable(e) {
+        console.log("Hello");
+        e.preventDefault();
+
+        if (e.stopPropagation) {
+            e.stopPropagation(); // Stops some browsers from redirecting.
+        }
+
         if (dragSrcEl !== this) {
-            // Set the source column's HTML to the HTML of the columnwe dropped on.
             dragSrcEl.innerHTML = this.innerHTML;
             this.innerHTML = e.dataTransfer.getData('text/html');
         }
+
+        return false
+}
+
+function handleDropFromTable(e) {
+    if (dragSrcEl.classList.contains("switch")) {
+        var counter = 0;
+        for (var x = 0; x < newUsers.length; x++){
+            if (newUsers[x] !== undefined){
+                if (newUsers[x].email === users[dragSrcOrderId].email) {
+                    console.log(newUsers[x].email);
+                    console.log(users[dragSrcOrderId].email);
+                    counter = 1;
+                }
+            }
+        }
+        console.log(counter);
+        if (counter === 0){
+            createNewTabke();
+        }
+
     }
-};
+}
 
 function handleDragEnd(e) {
-    var listItems = document.querySelectorAll('.listItem');
+    var listItems = document.querySelectorAll('.selectedUsers');
     for (i = 0; i < listItems.length; i++) {
         listItem = listItems[i];
         listItem.classList.remove('over');
@@ -49,43 +73,13 @@ function handleDragEnd(e) {
     dragSrcEl.classList.remove("dragStartClass");
 }
 
-function reOrder(listItems) {
-    var tempListItems = listItems;
-    tempListItems = Array.prototype.slice.call(tempListItems, 0);
-
-    tempListItems.sort(function(a, b) {
-        return a.getAttribute("order-id") - b.getAttribute("order-id");
-    });
-
-
-
-    var parent = document.getElementById('user-table1');
-    parent.innerHTML = "";
-
-    for (var i = 0, l = tempListItems.length; i < l; i++) {
-        parent.appendChild(tempListItems[i]);
-    }
-}
-
+const newUsers = [];
 var index = 0;
-function dropOverride(e) {
-    if (dragSrcEl.classList.contains("switch")){
-        createNewTabke();
-    } else if (this.classList.contains("switch1")){
-        handleDragStart();
-    console.log("other switch");
-    if (dragSrcEl != this) {
-        // Set the source column's HTML to the HTML of the columnwe dropped on.
-        dragSrcEl.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData('text/html');
-    }
-}
-
-}
-
 function createNewTabke() {
-    dragSrcOrderId = parseInt(dragSrcEl.getAttribute("order-id"));
+    console.log(users);
+    var checkValue = parseInt(dragSrcEl.getAttribute("checkValue"));
     if (index < 10) {
+        newUsers[dragSrcOrderId] = users[dragSrcOrderId];
         let div = createNode('div'),
             img = createNode('img'),
             tr = createNode('tr'),
@@ -99,29 +93,37 @@ function createNewTabke() {
             td7 = createNode("td");
 
         tr.setAttribute("draggable", "true");
+        tr.className += " checkValue";
 
-        tr.className += " listItem";
+        tr.setAttribute("checkValue", checkValue);
 
         tr.className += " order-id";
 
-        tr.className += " switch1";
+        tr.className += " selectedUsers";
 
         tr.setAttribute("order-id", index);
 
-        img.src = users[dragSrcOrderId].picture.thumbnail;
+        img.src = newUsers[dragSrcOrderId].picture.thumbnail;
 
-        td1.innerHTML = `${users[dragSrcOrderId].name.first}
-            ${users[dragSrcOrderId].name.last}`;
+        td1.innerHTML = `${newUsers[dragSrcOrderId].name.first}
+            ${newUsers[dragSrcOrderId].name.last}`;
 
-        div.innerHTML = `${users[dragSrcOrderId].email}`;
+        div.innerHTML = `${newUsers[dragSrcOrderId].email}`;
 
-        td2.innerHTML = `${users[dragSrcOrderId].dob.date}`;
+        td2.innerHTML = `${newUsers[dragSrcOrderId].dob.date}`;
 
-        td3.innerHTML = `${users[dragSrcOrderId].location.street}`;
+        td3.innerHTML = `${newUsers[dragSrcOrderId].location.street}`;
 
-        td4.innerHTML = `${users[dragSrcOrderId].phone}`;
+        td4.innerHTML = `${newUsers[dragSrcOrderId].phone}`;
 
-        td6.innerHTML = `${users[dragSrcOrderId].role}`;
+        td6.innerHTML = `${newUsers[dragSrcOrderId].role}`;
+
+        tr.addEventListener('dragstart', handleDragStart, false);
+        tr.addEventListener('dragenter', handleDragEnter, false);
+        tr.addEventListener('dragend', handleDragEnd, false);
+        tr.addEventListener('dragleave', handleDragLeave, false);
+        // tr.addEventListener('dragover', handleDragOver, false);
+        tr.addEventListener('drop', handleDropInsideOfTheTable, false);
 
         append(td, img);
         append(td1, div);

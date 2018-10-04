@@ -55,23 +55,19 @@ function generateUserRow(user, index) {
                             <option value="admin">Admin</option>
                         </select>`;
 
+    tr.className += " checkValue";
     tr.setAttribute("draggable", "true");
     tr.setAttribute("class", "listItem");
     tr.setAttribute("class", "switch");
     tr.setAttribute("order-id", index);
+    tr.setAttribute("checkValue", index);
 
     tr.addEventListener('dragstart', handleDragStart, false);
-    // tr.addEventListener('dragenter', handleDragEnter, false);
-    // tr.addEventListener('dragover', handleDragOver, false);
-    // tr.addEventListener('dragleave', handleDragLeave, false);
-    // tr.addEventListener('dragend', handleDragEnd, false);
-
-
-    table1.addEventListener('dragstart', handleDragStart, false);
-    table1.addEventListener('dragend', handleDragEnd, false);
+    // table1.addEventListener('dragenter', handleDragEnter, false);
     table1.addEventListener('dragover', handleDragOver, false);
-    table1.addEventListener('drop', handleDrop, false);
-
+    // table1.addEventListener('dragleave', handleDragLeave, false);
+    // table1.addEventListener('dragend', handleDragEnd, false);
+    table1.addEventListener('drop', handleDropFromTable, false);
 
     append(td, img);
     append(td1, div);
@@ -88,8 +84,7 @@ function generateUserRow(user, index) {
 
 var users;
 const table = document.getElementById("table-body");
-const table1 = document.getElementById("user-table1");
-
+const table1 = document.getElementById("table-body1");
 
 var dragSrcEl = null;
 const url = 'https://randomuser.me/api/?results=10';
