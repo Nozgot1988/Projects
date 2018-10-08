@@ -60,10 +60,6 @@ function generateUserRow(user, index) {
 
     tr.className += "first-table-row";
 
-    tr.addEventListener("dragstart", handleDragStart, false);
-    // table1.addEventListener("dragover", handleDragOver, false);
-    // table1.addEventListener("drop", handleDrop, false);
-
     append(td, img);
     append(td1, div);
     append(tr, td);

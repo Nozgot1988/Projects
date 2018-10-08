@@ -1,4 +1,3 @@
-
 const newUsers = [];
 var index = 0;
 function createNewTable() {
@@ -16,7 +15,11 @@ function createNewTable() {
             td7 = createNode("td");
 
         tr.addEventListener("dragstart", handleDragStart, false);
+        tr.addEventListener("dragenter", handleDragEnter, false);
+        tr.addEventListener("dragleave", handleDragLeave, false);
+        tr.addEventListener("dragover", handleDragOver, false);
         tr.addEventListener("drop", handleDrop, false);
+        tr.addEventListener("dragend", handleDragEnd, false);
 
         tr.setAttribute("class", "second-table-row");
         tr.setAttribute("draggable", "true");
@@ -52,7 +55,8 @@ function createNewTable() {
 
 document.addEventListener("dragstart", function (event){
     event.dataTransfer.setData('text/html', event.target.id);
-    console.log(event.target);
+    classNameElement = event.target.className;
+    console.log(classNameElement);
     indexOfDraggedEllement = parseInt(event.target.getAttribute("order-id"));
 });
 
@@ -67,7 +71,7 @@ document.addEventListener("dragend", function (event) {
 
 document.addEventListener("dragover", function (event) {
     event.preventDefault();
-    // console.log(event.target);
+
 });
 
 document.addEventListener("dragleave", function (event) {
@@ -94,6 +98,7 @@ document.addEventListener("drop", function (event) {
 });
 
 var dragSrcEl = null;
+
 function handleDragStart(e) {
     dragSrcEl = this;
     console.log(dragSrcEl);
@@ -102,22 +107,43 @@ function handleDragStart(e) {
     e.dataTransfer.setData('text/html', this.innerHTML);
 }
 
+function handleDragEnter(e) {
+    dragEnterElementIndex = (this.getAttribute("order-id"));
+    console.log(dragEnterElementIndex);
+}
+
+function handleDragOver(e) {
+
+}
+
+function handleDragLeave(e) {
+
+}
+
+function handleDragEnd(e) {
+
+}
 
 function handleDrop(e) {
 
     clearTable();
 
-    if (e.stopPropagation) {
-        e.stopPropagation(); // Stops some browsers from redirecting.
+    if (classNameElement === "second-table-row") {
+
+        if (e.stopPropagation) {
+            e.stopPropagation(); // Stops some browsers from redirecting.
+        }
+
+        var secondDragElIndex = parseInt(this.getAttribute("order-id"));
+
+        var temp = 0;
+        temp = newUsers[firstDragElIndex];
+        newUsers[firstDragElIndex] = newUsers[secondDragElIndex];
+        newUsers[secondDragElIndex] = temp;
+    } else if (classNameElement === "first-table-row") {
+        var insertElement = users[indexOfDraggedEllement];
+        newUsers.splice(dragEnterElementIndex, 0, insertElement);
     }
-
-    var secondDragElIndex = parseInt(this.getAttribute("order-id"));
-
-    var temp = 0;
-    temp = newUsers[firstDragElIndex];
-    newUsers[firstDragElIndex] = newUsers[secondDragElIndex];
-    newUsers[secondDragElIndex] = temp;
-
     createTableAfterReorder();
     return false;
 
@@ -149,7 +175,11 @@ function createTableAfterReorder() {
             td7 = createNode("td");
 
         tr.addEventListener("dragstart", handleDragStart, false);
+        tr.addEventListener("dragenter", handleDragEnter, false);
+        tr.addEventListener("dragleave", handleDragLeave, false);
+        tr.addEventListener("dragover", handleDragOver, false);
         tr.addEventListener("drop", handleDrop, false);
+        tr.addEventListener("dragend", handleDragEnd, false);
 
         tr.setAttribute("class", "second-table-row");
         tr.setAttribute("draggable", "true");
