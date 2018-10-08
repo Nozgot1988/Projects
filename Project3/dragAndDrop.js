@@ -1,63 +1,10 @@
 const newUsers = [];
-var index = 0;
-function createNewTable() {
-    if (index < 10) {
-        let div = createNode('div'),
-            img = createNode('img'),
-            tr = createNode('tr'),
-            td = createNode('td'),
-            td1 = createNode('td'),
-            td2 = createNode('td'),
-            td3 = createNode('td'),
-            td4 = createNode('td'),
-            td5 = createNode('td'),
-            td6 = createNode('td'),
-            td7 = createNode("td");
-
-        tr.addEventListener("dragstart", handleDragStart, false);
-        tr.addEventListener("dragenter", handleDragEnter, false);
-        tr.addEventListener("dragleave", handleDragLeave, false);
-        tr.addEventListener("dragover", handleDragOver, false);
-        tr.addEventListener("drop", handleDrop, false);
-        tr.addEventListener("dragend", handleDragEnd, false);
-
-        tr.setAttribute("class", "second-table-row");
-        tr.setAttribute("draggable", "true");
-
-        tr.setAttribute("order-id", index);
-
-        img.src = newUsers[index].picture.thumbnail;
-
-        td1.innerHTML = `${newUsers[index].name.first}
-            ${newUsers[index].name.last}`;
-
-        div.innerHTML = `${newUsers[index].email}`;
-
-        td2.innerHTML = `${newUsers[index].dob.date}`;
-
-        td3.innerHTML = `${newUsers[index].location.street}`;
-
-        td4.innerHTML = `${newUsers[index].phone}`;
-
-        td6.innerHTML = `${newUsers[index].role}`;
-
-        append(td, img);
-        append(td1, div);
-        append(tr, td);
-        append(tr, td1);
-        append(tr, td2);
-        append(tr, td3);
-        append(tr, td4);
-        append(table1, tr);
-        index++;
-    }
-}
 
 document.addEventListener("dragstart", function (event){
     event.dataTransfer.setData('text/html', event.target.id);
     classNameElement = event.target.className;
-    console.log(classNameElement);
     indexOfDraggedEllement = parseInt(event.target.getAttribute("order-id"));
+    console.log(indexOfDraggedEllement);
 });
 
 
@@ -81,8 +28,9 @@ document.addEventListener("dragleave", function (event) {
 document.addEventListener("drop", function (event) {
     event.stopPropagation();
     event.preventDefault();
+""
     var counter = 0;
-    if (event.target.classList.contains("droptarget")) {
+    if (event.target.classList.contains("droptarget") && classNameElement.includes("first-table-row")) {
         for (var x = 0; x < newUsers.length; x++) {
             if (newUsers[x] !== undefined) {
                 if (newUsers[x].email === users[indexOfDraggedEllement].email) {
@@ -91,8 +39,10 @@ document.addEventListener("drop", function (event) {
             }
         }
         if (counter === 0) {
+            console.log(indexOfDraggedEllement);
             newUsers.push(users[indexOfDraggedEllement]);
-            createNewTable();
+            clearTable();
+            createTableAfterReorder();
         }
     }
 });
@@ -108,7 +58,7 @@ function handleDragStart(e) {
 }
 
 function handleDragEnter(e) {
-    dragEnterElementIndex = (this.getAttribute("order-id"));
+    dragEnterElementIndex = parseInt(this.getAttribute("order-id"));
     console.log(dragEnterElementIndex);
 }
 
@@ -125,8 +75,8 @@ function handleDragEnd(e) {
 }
 
 function handleDrop(e) {
-
-    clearTable();
+    event.stopPropagation();
+    event.preventDefault();
 
     if (classNameElement === "second-table-row") {
 
@@ -140,9 +90,20 @@ function handleDrop(e) {
         temp = newUsers[firstDragElIndex];
         newUsers[firstDragElIndex] = newUsers[secondDragElIndex];
         newUsers[secondDragElIndex] = temp;
+        clearTable();
+
     } else if (classNameElement === "first-table-row") {
-        var insertElement = users[indexOfDraggedEllement];
-        newUsers.splice(dragEnterElementIndex, 0, insertElement);
+        var count = 0;
+        for (var x = 0; x < newUsers.length; x++) {
+            if (newUsers[x].email === users[indexOfDraggedEllement].email) {
+                count = 1;
+            }
+        }
+        if (count === 0){
+            var insertElement = users[indexOfDraggedEllement];
+            newUsers.splice(dragEnterElementIndex, 0, insertElement);
+        }
+        clearTable();
     }
     createTableAfterReorder();
     return false;
@@ -163,7 +124,7 @@ function createTableAfterReorder() {
     for (var x = 0; x < newUsers.length; x++){
         if (newUsers[x] !== undefined){
         let div = createNode('div'),
-            img = createNode('img'),
+            div1 = createNode('div'),
             tr = createNode('tr'),
             td = createNode('td'),
             td1 = createNode('td'),
@@ -186,7 +147,13 @@ function createTableAfterReorder() {
 
         tr.setAttribute("order-id", x);
 
-        img.src = newUsers[x].picture.thumbnail;
+        div1.style.backgroundImage = "url(" + newUsers[x].picture.thumbnail + ")";
+
+        div1.style.width = "48px";
+
+        div1.style.height = "48px";
+
+        div1.style.borderRadius = "24px";
 
         td1.innerHTML = `${newUsers[x].name.first}
                 ${newUsers[x].name.last}`;
@@ -201,7 +168,7 @@ function createTableAfterReorder() {
 
         td6.innerHTML = `${newUsers[x].role}`;
 
-        append(td, img);
+        append(td, div1);
         append(td1, div);
         append(tr, td);
         append(tr, td1);

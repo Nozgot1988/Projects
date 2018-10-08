@@ -85,17 +85,6 @@ button{
 
 }
 
-[draggable] {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    /* Required to make elements draggable in old WebKit */
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
-
-}
-
 .listItem{
     padding: 10px 10px 10px 10px;
     margin: 3px;
@@ -168,6 +157,14 @@ button{
 
 .red-bottom{
     border-top: 6pt solid red;
+}
+
+img{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 

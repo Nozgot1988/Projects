@@ -22,6 +22,7 @@ function addRole(index) {
 function generateUserRow(user, index) {
 
     let div = createNode('div'),
+        div1 = createNode('div'),
         img = createNode('img'),
         tr = createNode('tr'),
         td = createNode('td'),
@@ -33,7 +34,15 @@ function generateUserRow(user, index) {
         td6 = createNode('td'),
         td7 = createNode("td");
 
-    img.src=user.picture.thumbnail;
+    // img.src=user.picture.thumbnail;
+
+    div1.style.backgroundImage = "url(" + user.picture.thumbnail + ")";
+
+    div1.style.width = "48px";
+
+    div1.style.height = "48px";
+
+    div1.style.borderRadius = "24px";
 
     td1.innerHTML=`${user.name.first}
             ${user.name.last}`;
@@ -58,9 +67,11 @@ function generateUserRow(user, index) {
     tr.setAttribute("draggable", "true");
     tr.setAttribute("order-id", index);
 
+    img.setAttribute("draggable", "false");
+    img.style.userSelect = "none";
     tr.className += "first-table-row";
 
-    append(td, img);
+    append(td, div1);
     append(td1, div);
     append(tr, td);
     append(tr, td1);
@@ -78,6 +89,7 @@ const table = document.getElementById("table-body");
 const table1 = document.getElementById("table-body1");
 const container1 = document.getElementById("container1");
 container1.classList += " droptarget";
+
 
 var dragSrcEl = null;
 const url = 'https://randomuser.me/api/?results=10';
