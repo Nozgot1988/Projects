@@ -167,6 +167,39 @@ img{
     user-select: none;
 }
 
+.topnav{
+    height: 35pt;
+    background-color: rgb(242, 247, 248);
+}
+
+.topnav .search-container{
+    float: right;
+}
+
+.topnav .search-container button{
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topnav .search-container button:hover{
+    background: #ccc;
+}
+
+.topnav input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
 
 
 

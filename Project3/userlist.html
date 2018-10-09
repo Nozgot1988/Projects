@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Users list</title>
-
     <link rel="stylesheet" href="userliststyle.css">
     <link rel="stylesheet" href="userliststyle1.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
+    <div class="topnav">
+        <form class="search-container" id="search-container">
+            <button onclick="getSearchValues()" type="button"><i class="fa fa-search"></i></button>
+            <input type="text" placeholder="First name..." name="name">
+        </form>
+    </div>
     <div class="container">
         <table class="user-table" id="user-table">
             <thead>

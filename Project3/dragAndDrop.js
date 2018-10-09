@@ -28,7 +28,6 @@ document.addEventListener("dragleave", function (event) {
 document.addEventListener("drop", function (event) {
     event.stopPropagation();
     event.preventDefault();
-""
     var counter = 0;
     if (event.target.classList.contains("droptarget") && classNameElement.includes("first-table-row")) {
         for (var x = 0; x < newUsers.length; x++) {

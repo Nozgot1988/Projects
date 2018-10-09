@@ -1,23 +1,59 @@
-function tablToTabl() {
-    var table1 = document.getElementById("table1"),
-        table2 = document.getElementById("table2"),
-        checkboxes = document.getElementsByName("check-table1");
+var url = 'http://api.pipl.com/search/?first_name=searchName&last_name=searchLastName&key=mzte500zbax30eznhefbvggt';
 
-    for (var i = 0; i < checkboxes.length; i++){
-        if (checkboxes[i].checked){
-            var newRow = table2.insertRow(table2.length),
-                cell1 = newRow.insertCell(0),
-                cell2 = newRow.insertCell(1),
-                cell3 = newRow.insertCell(2),
-                cell4 = newRow.insertCell(3);
+var list = document.getElementById("search-results-list");
 
-            cell1.innerHTML = table1.rows[i+1].cells[0].innerHTML;
-            cell2.innerHTML = table1.rows[i+1].cells[1].innerHTML;
-            cell3.innerHTML = table1.rows[i+1].cells[2].innerHTML;
-            cell4.innerHTML = "<input type='checkbox' name='check-tab2'>";
+function getSearchValues() {
 
+    container = document.getElementById("search-container");
 
-        }
-    }
+    firstname = container.elements["name"].value;
 
+    lastname = container.elements["lastname"].value;
+
+    console.log("first name " + firstname + " last name " + lastname);
+
+    url = getSearchRequest(firstname, lastname);
+
+    console.log(url);
+
+    fetch(url)
+        .then((resp) => resp.json()) // Transform the data into json
+        .then(function(data) {
+            console.log(data);
+            let searchResults = data.possible_persons;
+            searchResults.map(function (searchResult) {
+                console.log(searchResult);
+                let dt = createNode('dt'),
+                    dd1 = createNode('dd'),
+                    dd2 = createNode('dd'),
+                    dd3 = createNode('dd'),
+                    dd4 = createNode('dd'),
+                    dd5 = createNode('dd');
+                dd1.innerHTML = `${searchResult.names[0].display}`;
+                dd2.innerHTML = `${searchResult.addresses[0].display}`;
+                dd3.innerHTML = `${searchResult.dob.display}`;
+                dd4.innerHTML = `${searchResult.phones[0].display}`;
+                dd5.innerHTML = `${searchResult.gender.content}`;
+                append(dt, dd1);
+                append(dt, dd2);
+                append(dt, dd3);
+                append(dt, dd4);
+                append(dt, dd5);
+                append(list, dt);
+            })
+        })
+}
+
+function getSearchRequest(name, lastname) {
+    newUrl = url.replace('searchName', name);
+    newUrl = newUrl.replace('searchLastName', lastname);
+    return newUrl;
+}
+
+function createNode(element) {
+    return document.createElement(element);
+}
+
+function  append(parent, el) {
+    return parent.appendChild(el);
 }
