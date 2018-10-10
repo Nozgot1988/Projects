@@ -6,6 +6,7 @@ function  append(parent, el) {
     return parent.appendChild(el);
 }
 
+
 function deleteAction(index, btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
@@ -19,8 +20,11 @@ function addRole(index) {
    users[index].role = strUser;
 }
 
-function generateUserRow(user, index) {
 
+
+function generateUserRow(users) {
+    clearFirstTable();
+    for (let x = 0; x < 10; x++){
     let div = createNode('div'),
         div1 = createNode('div'),
         img = createNode('img'),
@@ -36,7 +40,7 @@ function generateUserRow(user, index) {
 
     // img.src=user.picture.thumbnail;
 
-    div1.style.backgroundImage = "url(" + user.picture.thumbnail + ")";
+    div1.style.backgroundImage = "url(" + users[x].picture.thumbnail + ")";
 
     div1.style.width = "48px";
 
@@ -44,28 +48,28 @@ function generateUserRow(user, index) {
 
     div1.style.borderRadius = "24px";
 
-    td1.innerHTML=`${user.name.first}
-            ${user.name.last}`;
+    td1.innerHTML = `${users[x].name.first}
+            ${users[x].name.last}`;
 
-    div.innerHTML=`${user.email}`;
+    div.innerHTML = `${users[x].email}`;
 
-    td2.innerHTML=`${user.dob.date}`;
+    td2.innerHTML = `${users[x].dob.date}`;
 
-    td3.innerHTML=`${user.location.street}`;
+    td3.innerHTML = `${users[x].location.street}`;
 
-    td4.innerHTML=`${user.phone}`;
+    td4.innerHTML = `${users[x].phone}`;
 
-    td5.innerHTML=`<button onclick="deleteAction(` + index + `, this)">Delete</button>`;
+    td5.innerHTML = `<button onclick="deleteAction(` + x + `, this)">Delete</button>`;
 
-    td6.innerHTML=`${user.role}`;
+    td6.innerHTML = `${users[x].role}`;
 
-    td7.innerHTML=`<select onchange="addRole(` + index + `)" name="drop1" id="Select1">
+    td7.innerHTML = `<select onchange="addRole(` + x + `)" name="drop1" id="Select1">
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>`;
 
     tr.setAttribute("draggable", "true");
-    tr.setAttribute("order-id", index);
+    tr.setAttribute("order-id", x);
 
     img.setAttribute("draggable", "false");
     img.style.userSelect = "none";
@@ -78,10 +82,10 @@ function generateUserRow(user, index) {
     append(tr, td2);
     append(tr, td3);
     append(tr, td4);
-    append(tr,td5);
-    append(tr,td7);
+    append(tr, td5);
+    append(tr, td7);
     append(table, tr);
-
+    }
 }
 
 var users;
@@ -90,19 +94,21 @@ const table1 = document.getElementById("table-body1");
 const container1 = document.getElementById("container1");
 container1.classList += " droptarget";
 
-
 var dragSrcEl = null;
-const url = 'https://randomuser.me/api/?results=10';
+var url = 'https://randomuser.me/api/?page=1&results=10';
 var count = 0;
 fetch(url)
     .then((resp) => resp.json())
     .then(function (data) {
         users = data.results;
-        users.map(function (user, index) {
-            generateUserRow(user, index);
-        });
+        console.log(users);
+        // users.map(function (user, index) {
+        generateUserRow(users);
+        pagination.render();
+        // });
         // setSortActions();
     });
+
 
 var previousArrow;
 function sorting(direction) {
@@ -229,8 +235,6 @@ function sortByPhoneDown(a, b) {
     return 0;
 }
 
-
-
 function setSortActions() {
     var bottom = document.getElementsByClassName('bottom-triangle');
     var up = document.getElementsByClassName('up-triangle');
@@ -288,6 +292,105 @@ function exchangeSortUp(arr) {
     }
     return arr;
 }
+
+var el = document.getElementById("pagination");
+
+function getPageData(pageNo, pageLength) {
+    let startPage = (pageNo - 1) * pageLength;
+    let end = startPage + pageLength;
+
+    let pageData = users.slice(startPage, end);
+
+    console.log(pageData);
+
+    return pageData;
+}
+
+function clearFirstTable() {
+    var table = document.getElementById("user-table");
+    for (let i = table.rows.length - 1; i > 0; i--) {
+        table.deleteRow(i);
+    }
+}
+
+var counter = 2;
+var pagination = {
+    curentPage: 1,
+    pageLength: 10,
+    totalRecords: 50,
+    render: function () {
+        this.totalRecords = users.length;
+        let pages = Math.ceil(this.totalRecords / this.pageLength);
+        this.pages = pages;
+
+
+        let div = createNode('div'),
+            button1 = createNode('button'),
+            button2 = createNode('button');
+
+        button1.className = "pagination-btn prev";
+        button1.type = "button";
+        button1.innerHTML = `previous`;
+        button2.className = "pagination-btn next";
+        button2.type = "button";
+        button2.innerHTML = `next`;
+        button2.setAttribute("onclick", "pagination.addNewPage(this)");
+
+        append(div, button1);
+        for (let x = 1; x <= pages; x++){
+            append(div, this.getButton(x));
+        }
+        append(div,button2);
+        append(el, div);
+
+
+    },
+    getButton: function (text) {
+        let className = "pagination-btn";
+        if (this.curentPage === text){
+            className += " current-page";
+        }
+        let button = createNode('button');
+        button.setAttribute("id", "btn-"+ `${text}`);
+        button.setAttribute("onclick", "pagination.goToPage(this," + `${text}` + ")");
+        button.className = className;
+        button.type = "button";
+        button.innerHTML = `${text}`;
+        return button;
+    },
+    goToPage: function (btn, pageNumber) {
+        this.curentPage = pageNumber;
+        let paginationButtons = document.getElementsByClassName("pagination-btn");
+        for (let x = 0; x < paginationButtons.length; x++){
+            paginationButtons[x].classList.remove("current-page");
+        }
+        btn.classList += " current-page";
+
+        let getData = getPageData(pageNumber, this.pageLength);
+        generateUserRow(getData);
+    },
+    addNewPage: function (btn) {
+        var newUrl = url.replace("page=1", "page=" + `${counter}`);
+        counter++;
+        console.log(newUrl);
+        fetch(newUrl)
+            .then((resp) => resp.json())
+            .then(function (data) {
+                var nextUsers = users;
+                nextUsers.push.apply(nextUsers, data.results);
+                var elem = document.getElementsByClassName("pagination-btn");
+                for (let i = elem.length - 1; i >= 0; i--) {
+                    elem[i].parentNode.removeChild(elem[i]);
+                }
+                generateUserRow(nextUsers);
+                pagination.render();
+                // setSortActions();
+            });
+    }
+
+};
+
+
 
 
 

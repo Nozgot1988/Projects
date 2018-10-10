@@ -112,14 +112,12 @@ function handleDrop(e) {
 
 function clearTable() {
     var elements = document.getElementsByClassName("second-table-row"), index;
-
     for (index = elements.length -1; index >= 0; index--) {
         elements[index].parentNode.removeChild(elements[index]);
     }
 }
 
 function createTableAfterReorder() {
-    console.log(newUsers);
     for (var x = 0; x < newUsers.length; x++){
         if (newUsers[x] !== undefined){
         let div = createNode('div'),

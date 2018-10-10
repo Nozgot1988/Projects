@@ -8,10 +8,11 @@ body{
 
 .container{
     position: relative;
+    float: left;
     top: 25%;
     left: 25%;
     color: rgb(129, 150, 160);
-    margin: 20pt 40pt 40pt 90pt;
+    margin: 20pt 40pt 40pt -300pt;
     background: rgb(242, 247, 248);
     width: 650pt;
     height: 580pt;
@@ -200,6 +201,11 @@ img{
     font-size: 17px;
 }
 
+#pagination{
+    position: absolute;
+    bottom: 30pt;
+    left: 180pt;
+}
 
 
 

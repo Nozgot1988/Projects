@@ -7,11 +7,11 @@ body{
 }
 
 .container1{
-    position: relative;
+    display: block;
     top: 25%;
     left: 25%;
     color: rgb(129, 150, 161);
-    margin: 20pt 40pt 40pt 90pt;
+    margin: 20pt 40pt 40pt 700pt;
     background: rgb(242, 247, 248);
     width: 650pt;
     height: 580pt;
