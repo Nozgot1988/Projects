@@ -61,13 +61,12 @@ td{
     background: white;
 }
 
-tbody >tr {
-    background-color: white;
-}
+/*tbody >tr {*/
+    /*background-color: white;*/
+/*}*/
 
 tbody >tr:hover{
     cursor: pointer;
-    background: rgb(229, 242, 248);
 }
 
 img{

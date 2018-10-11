@@ -1,18 +1,16 @@
-var url = 'http://api.pipl.com/search/?first_name=searchName&last_name=searchLastName&key=mzte500zbax30eznhefbvggt';
+var url = 'http://api.pipl.com/search/?first_name=searchName&key=8u2vt6exnkkmltwvukxl1969';
 
 var list = document.getElementById("search-results-list");
 
 function getSearchValues() {
 
-    container = document.getElementById("search-container");
+    var container = document.getElementById("search-container");
 
-    firstname = container.elements["name"].value;
+    var firstname = container.elements["name"].value;
 
-    lastname = container.elements["lastname"].value;
+    console.log("first name " + firstname);
 
-    console.log("first name " + firstname + " last name " + lastname);
-
-    url = getSearchRequest(firstname, lastname);
+    url = getSearchRequest(firstname);
 
     console.log(url);
 
@@ -44,9 +42,8 @@ function getSearchValues() {
         })
 }
 
-function getSearchRequest(name, lastname) {
+function getSearchRequest(name) {
     newUrl = url.replace('searchName', name);
-    newUrl = newUrl.replace('searchLastName', lastname);
     return newUrl;
 }
 

@@ -20,11 +20,20 @@ function addRole(index) {
    users[index].role = strUser;
 }
 
+var myVar;
 
+function myFunction() {
+    myVar = setTimeout(showPage, 1500);
+}
+
+function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("container").style.display = "block";
+}
 
 function generateUserRow(users) {
-    clearFirstTable();
-    for (let x = 0; x < 10; x++){
+    // clearFirstTable();
+    for (let x = 0; x < 20; x++){
     let div = createNode('div'),
         div1 = createNode('div'),
         img = createNode('img'),
@@ -89,13 +98,14 @@ function generateUserRow(users) {
 }
 
 var users;
+const container = document.getElementById("container");
 const table = document.getElementById("table-body");
 const table1 = document.getElementById("table-body1");
 const container1 = document.getElementById("container1");
 container1.classList += " droptarget";
 
 var dragSrcEl = null;
-var url = 'https://randomuser.me/api/?page=1&results=10';
+var url = 'https://randomuser.me/api/?page=1&results=20';
 var count = 0;
 fetch(url)
     .then((resp) => resp.json())
@@ -104,11 +114,51 @@ fetch(url)
         console.log(users);
         // users.map(function (user, index) {
         generateUserRow(users);
-        pagination.render();
+        // pagination.render();
         // });
         // setSortActions();
     });
 
+var counter = 0;
+
+function yHandler(){
+    let wrap = document.getElementById("container");
+    let userTable = document.getElementById("user-table");
+    let contentHeight = userTable.offsetHeight;
+    console.log(contentHeight);
+    let yOffset = wrap.scrollTop;
+    console.log(yOffset);
+    var y = yOffset + 780;
+    console.log(y);
+    if (y > contentHeight){
+        let tr = createNode('tr'),
+            div = createNode('div');
+        div.setAttribute("class", "lds-dual-ring");
+        tr.setAttribute("id", "loading-tr");
+        tr.style.height="60px";
+        tr.style.backgroundColor="rgb(rgb(242, 247, 248))";
+        append(tr, div);
+        append(table, tr);
+        var newUrl = url.replace("page=1", "page=" + `${counter}`);
+        counter++;
+        fetch(newUrl)
+            .then((resp) => resp.json())
+            .then(function (data) {
+                var nextUsers = data.results;
+                users.push(users, nextUsers);
+                let table = document.getElementById("table-body");
+                let tr = document.getElementById("loading-tr");
+                table.removeChild(tr);
+                generateUserRow(nextUsers);
+
+            });
+        y = 0;
+        yOffset = 0;
+    }
+
+}
+
+container.setAttribute("onscroll", "yHandler()");
 
 var previousArrow;
 function sorting(direction) {
@@ -293,102 +343,102 @@ function exchangeSortUp(arr) {
     return arr;
 }
 
-var el = document.getElementById("pagination");
-
-function getPageData(pageNo, pageLength) {
-    let startPage = (pageNo - 1) * pageLength;
-    let end = startPage + pageLength;
-
-    let pageData = users.slice(startPage, end);
-
-    console.log(pageData);
-
-    return pageData;
-}
-
-function clearFirstTable() {
-    var table = document.getElementById("user-table");
-    for (let i = table.rows.length - 1; i > 0; i--) {
-        table.deleteRow(i);
-    }
-}
-
-var counter = 2;
-var pagination = {
-    curentPage: 1,
-    pageLength: 10,
-    totalRecords: 50,
-    render: function () {
-        this.totalRecords = users.length;
-        let pages = Math.ceil(this.totalRecords / this.pageLength);
-        this.pages = pages;
-
-
-        let div = createNode('div'),
-            button1 = createNode('button'),
-            button2 = createNode('button');
-
-        button1.className = "pagination-btn prev";
-        button1.type = "button";
-        button1.innerHTML = `previous`;
-        button2.className = "pagination-btn next";
-        button2.type = "button";
-        button2.innerHTML = `next`;
-        button2.setAttribute("onclick", "pagination.addNewPage(this)");
-
-        append(div, button1);
-        for (let x = 1; x <= pages; x++){
-            append(div, this.getButton(x));
-        }
-        append(div,button2);
-        append(el, div);
-
-
-    },
-    getButton: function (text) {
-        let className = "pagination-btn";
-        if (this.curentPage === text){
-            className += " current-page";
-        }
-        let button = createNode('button');
-        button.setAttribute("id", "btn-"+ `${text}`);
-        button.setAttribute("onclick", "pagination.goToPage(this," + `${text}` + ")");
-        button.className = className;
-        button.type = "button";
-        button.innerHTML = `${text}`;
-        return button;
-    },
-    goToPage: function (btn, pageNumber) {
-        this.curentPage = pageNumber;
-        let paginationButtons = document.getElementsByClassName("pagination-btn");
-        for (let x = 0; x < paginationButtons.length; x++){
-            paginationButtons[x].classList.remove("current-page");
-        }
-        btn.classList += " current-page";
-
-        let getData = getPageData(pageNumber, this.pageLength);
-        generateUserRow(getData);
-    },
-    addNewPage: function (btn) {
-        var newUrl = url.replace("page=1", "page=" + `${counter}`);
-        counter++;
-        console.log(newUrl);
-        fetch(newUrl)
-            .then((resp) => resp.json())
-            .then(function (data) {
-                var nextUsers = users;
-                nextUsers.push.apply(nextUsers, data.results);
-                var elem = document.getElementsByClassName("pagination-btn");
-                for (let i = elem.length - 1; i >= 0; i--) {
-                    elem[i].parentNode.removeChild(elem[i]);
-                }
-                generateUserRow(nextUsers);
-                pagination.render();
-                // setSortActions();
-            });
-    }
-
-};
+// var el = document.getElementById("pagination");
+//
+// function getPageData(pageNo, pageLength) {
+//     let startPage = (pageNo - 1) * pageLength;
+//     let end = startPage + pageLength;
+//
+//     let pageData = users.slice(startPage, end);
+//
+//     console.log(pageData);
+//
+//     return pageData;
+// }
+//
+// function clearFirstTable() {
+//     var table = document.getElementById("user-table");
+//     for (let i = table.rows.length - 1; i > 0; i--) {
+//         table.deleteRow(i);
+//     }
+// }
+//
+// var counter = 2;
+// var pagination = {
+//     curentPage: 1,
+//     pageLength: 10,
+//     totalRecords: 50,
+//     render: function () {
+//         this.totalRecords = users.length;
+//         let pages = Math.ceil(this.totalRecords / this.pageLength);
+//         this.pages = pages;
+//
+//
+//         let div = createNode('div'),
+//             button1 = createNode('button'),
+//             button2 = createNode('button');
+//
+//         button1.className = "pagination-btn prev";
+//         button1.type = "button";
+//         button1.innerHTML = `previous`;
+//         button2.className = "pagination-btn next";
+//         button2.type = "button";
+//         button2.innerHTML = `next`;
+//         button2.setAttribute("onclick", "pagination.addNewPage(this)");
+//
+//         append(div, button1);
+//         for (let x = 1; x <= pages; x++){
+//             append(div, this.getButton(x));
+//         }
+//         append(div,button2);
+//         append(el, div);
+//
+//
+//     },
+//     getButton: function (text) {
+//         let className = "pagination-btn";
+//         if (this.curentPage === text){
+//             className += " current-page";
+//         }
+//         let button = createNode('button');
+//         button.setAttribute("id", "btn-"+ `${text}`);
+//         button.setAttribute("onclick", "pagination.goToPage(this," + `${text}` + ")");
+//         button.className = className;
+//         button.type = "button";
+//         button.innerHTML = `${text}`;
+//         return button;
+//     },
+//     goToPage: function (btn, pageNumber) {
+//         this.curentPage = pageNumber;
+//         let paginationButtons = document.getElementsByClassName("pagination-btn");
+//         for (let x = 0; x < paginationButtons.length; x++){
+//             paginationButtons[x].classList.remove("current-page");
+//         }
+//         btn.classList += " current-page";
+//
+//         let getData = getPageData(pageNumber, this.pageLength);
+//         generateUserRow(getData);
+//     },
+//     addNewPage: function (btn) {
+//         var newUrl = url.replace("page=1", "page=" + `${counter}`);
+//         counter++;
+//         console.log(newUrl);
+//         fetch(newUrl)
+//             .then((resp) => resp.json())
+//             .then(function (data) {
+//                 var nextUsers = users;
+//                 nextUsers.push.apply(nextUsers, data.results);
+//                 var elem = document.getElementsByClassName("pagination-btn");
+//                 for (let i = elem.length - 1; i >= 0; i--) {
+//                     elem[i].parentNode.removeChild(elem[i]);
+//                 }
+//                 generateUserRow(nextUsers);
+//                 pagination.render();
+//                 // setSortActions();
+//             });
+//     }
+//
+// };
 
 
 

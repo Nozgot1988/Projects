@@ -7,6 +7,8 @@ body{
 }
 
 .container{
+    overflow: scroll;
+    display: block;
     position: relative;
     float: left;
     top: 25%;
@@ -62,13 +64,12 @@ td{
     background: transparent;
 }
 
-tbody >tr {
-    background-color: white;
-}
+/*tbody >tr {*/
+    /*background-color: white;*/
+/*}*/
 
 tbody >tr:hover{
     cursor: pointer;
-    background: rgb(229, 242, 248);
 }
 
 img{
@@ -96,28 +97,6 @@ button{
     -ms-transition: all 0.2s ease-out;
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
-}
-
-.dragStartClass {
-    opacity: 0;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -ms-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-
-}
-
-.over {
-
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -ms-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
-    height: 80px;
-    background-color: #ffc107;
-    color: white;
 }
 
 .up-triangle{
@@ -205,6 +184,32 @@ img{
     position: absolute;
     bottom: 30pt;
     left: 180pt;
+}
+
+.lds-dual-ring {
+    background: rgb(242, 247, 248);
+    position: absolute;
+    left: 280pt;
+    width: 64px;
+    height: 64px;
+}
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 5px solid red;
+    border-color: red transparent red transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 
