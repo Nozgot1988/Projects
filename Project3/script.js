@@ -11,7 +11,6 @@ function deleteAction(index, btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
     users.splice(index, 1);
-    console.log(users);
 }
 
 function addRole(index) {
@@ -20,24 +19,8 @@ function addRole(index) {
    users[index].role = strUser;
 }
 
-var myVar;
-
-function myFunction() {
-    myVar = setTimeout(showPage, 1500);
-}
-
-function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("container").style.display = "block";
-}
-
-function generateUserRow(users) {
-    // clearFirstTable();
-    for (let x = 0; x < 20; x++){
-    let div = createNode('div'),
-        div1 = createNode('div'),
-        img = createNode('img'),
-        tr = createNode('tr'),
+function generateUserRow(user, index) {
+    let tr = createNode('tr'),
         td = createNode('td'),
         td1 = createNode('td'),
         td2 = createNode('td'),
@@ -47,46 +30,31 @@ function generateUserRow(users) {
         td6 = createNode('td'),
         td7 = createNode("td");
 
-    // img.src=user.picture.thumbnail;
+    if (user.names !== undefined) {
+        td1.innerHTML = `${user.names[0].display}`;
+    }
+    if (user.dob !== undefined){
+        td2.innerHTML = `${user.dob.display}`;
+    }
+    if (user.addresses !== undefined){
+        td3.innerHTML = `${user.addresses[0].display}`;
+    }
+    if (user.phones !== undefined){
+        td4.innerHTML = `${user.phones[0].display}`;
+    }
 
-    div1.style.backgroundImage = "url(" + users[x].picture.thumbnail + ")";
+    td5.innerHTML = `<button onclick="deleteAction(` + index + `, this)">Delete</button>`;
 
-    div1.style.width = "48px";
-
-    div1.style.height = "48px";
-
-    div1.style.borderRadius = "24px";
-
-    td1.innerHTML = `${users[x].name.first}
-            ${users[x].name.last}`;
-
-    div.innerHTML = `${users[x].email}`;
-
-    td2.innerHTML = `${users[x].dob.date}`;
-
-    td3.innerHTML = `${users[x].location.street}`;
-
-    td4.innerHTML = `${users[x].phone}`;
-
-    td5.innerHTML = `<button onclick="deleteAction(` + x + `, this)">Delete</button>`;
-
-    td6.innerHTML = `${users[x].role}`;
-
-    td7.innerHTML = `<select onchange="addRole(` + x + `)" name="drop1" id="Select1">
+    td7.innerHTML = `<select onchange="addRole(` + index + `)" name="drop1" id="Select1">
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>`;
 
     tr.setAttribute("draggable", "true");
-    tr.setAttribute("order-id", x);
+    tr.setAttribute("order-id", index);
 
-    img.setAttribute("draggable", "false");
-    img.style.userSelect = "none";
     tr.className += "first-table-row";
 
-    append(td, div1);
-    append(td1, div);
-    append(tr, td);
     append(tr, td1);
     append(tr, td2);
     append(tr, td3);
@@ -94,7 +62,6 @@ function generateUserRow(users) {
     append(tr, td5);
     append(tr, td7);
     append(table, tr);
-    }
 }
 
 var users;
@@ -104,20 +71,39 @@ const table1 = document.getElementById("table-body1");
 const container1 = document.getElementById("container1");
 container1.classList += " droptarget";
 
-var dragSrcEl = null;
-var url = 'https://randomuser.me/api/?page=1&results=20';
-var count = 0;
-fetch(url)
-    .then((resp) => resp.json())
-    .then(function (data) {
-        users = data.results;
-        console.log(users);
-        // users.map(function (user, index) {
-        generateUserRow(users);
-        // pagination.render();
-        // });
-        // setSortActions();
-    });
+var url = 'http://api.pipl.com/search/?first_name=searchName&last_name=searchLastName&key=7vao4ysqfoku40mlq3s8l2e8';
+var list = document.getElementById("search-results-list");
+
+function getSearchValues() {
+
+    var container = document.getElementById("search-container");
+
+    var firstname = container.elements["name"].value;
+    var lastname = container.elements["lastname"].value;
+
+    console.log("first name " + firstname);
+    console.log("last name " + lastname);
+
+    url = getSearchRequest(firstname, lastname);
+
+    console.log(url);
+
+    fetch(url)
+        .then((resp) => resp.json()) // Transform the data into json
+        .then(function(data) {
+            console.log(data);
+            users = data.possible_persons;
+            users.map(function (user, index) {
+                generateUserRow(user, index)
+            })
+        })
+}
+
+function getSearchRequest(name, lastname) {
+    newUrl = url.replace('searchName', name);
+    newUrl = newUrl.replace('searchLastName', lastname);
+    return newUrl;
+}
 
 var counter = 0;
 

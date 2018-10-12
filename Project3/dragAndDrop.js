@@ -32,7 +32,7 @@ document.addEventListener("drop", function (event) {
     if (event.target.classList.contains("droptarget") && classNameElement.includes("first-table-row")) {
         for (var x = 0; x < newUsers.length; x++) {
             if (newUsers[x] !== undefined) {
-                if (newUsers[x].email === users[indexOfDraggedEllement].email) {
+                if (newUsers[x].addresses[0] === users[indexOfDraggedEllement].addresses[0] ) {
                     counter = 1;
                 }
             }
@@ -94,7 +94,7 @@ function handleDrop(e) {
     } else if (classNameElement === "first-table-row") {
         var count = 0;
         for (var x = 0; x < newUsers.length; x++) {
-            if (newUsers[x].email === users[indexOfDraggedEllement].email) {
+            if (newUsers[x].addresses[0]  === users[indexOfDraggedEllement].addresses[0]) {
                 count = 1;
             }
         }
@@ -120,17 +120,12 @@ function clearTable() {
 function createTableAfterReorder() {
     for (var x = 0; x < newUsers.length; x++){
         if (newUsers[x] !== undefined){
-        let div = createNode('div'),
-            div1 = createNode('div'),
-            tr = createNode('tr'),
-            td = createNode('td'),
-            td1 = createNode('td'),
-            td2 = createNode('td'),
-            td3 = createNode('td'),
-            td4 = createNode('td'),
-            td5 = createNode('td'),
-            td6 = createNode('td'),
-            td7 = createNode("td");
+            let tr = createNode('tr'),
+                td1 = createNode('td'),
+                td2 = createNode('td'),
+                td3 = createNode('td'),
+                td4 = createNode('td'),
+                td6 = createNode('td');
 
         tr.addEventListener("dragstart", handleDragStart, false);
         tr.addEventListener("dragenter", handleDragEnter, false);
@@ -144,30 +139,19 @@ function createTableAfterReorder() {
 
         tr.setAttribute("order-id", x);
 
-        div1.style.backgroundImage = "url(" + newUsers[x].picture.thumbnail + ")";
+        if (newUsers[x].names !== undefined) {
+            td1.innerHTML = `${newUsers[x].names[0].display}`;
+        }
+        if (newUsers[x].dob !== undefined){
+            td2.innerHTML = `${newUsers[x].dob.display}`;
+        }
+        if (newUsers[x].addresses !== undefined){
+            td3.innerHTML = `${newUsers[x].addresses[0].display}`;
+        }
+        if (newUsers[x].phones !== undefined){
+            td4.innerHTML = `${newUsers[x].phones[0].display}`;
+        }
 
-        div1.style.width = "48px";
-
-        div1.style.height = "48px";
-
-        div1.style.borderRadius = "24px";
-
-        td1.innerHTML = `${newUsers[x].name.first}
-                ${newUsers[x].name.last}`;
-
-        div.innerHTML = `${newUsers[x].email}`;
-
-        td2.innerHTML = `${newUsers[x].dob.date}`;
-
-        td3.innerHTML = `${newUsers[x].location.street}`;
-
-        td4.innerHTML = `${newUsers[x].phone}`;
-
-        td6.innerHTML = `${newUsers[x].role}`;
-
-        append(td, div1);
-        append(td1, div);
-        append(tr, td);
         append(tr, td1);
         append(tr, td2);
         append(tr, td3);
