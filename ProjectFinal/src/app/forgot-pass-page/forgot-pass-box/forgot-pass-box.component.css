@@ -1,0 +1,80 @@
+.forgot-pass-box{
+  position: absolute;
+  left: 450pt;
+  bottom: 0;
+  height: 550pt;
+  width: 400pt;
+  background-color: white;
+  border: none;
+  box-shadow: 0.1em 0.4em 16px rgba(0,0,0,0.5);
+}
+
+.back-arrow{
+  margin: 60pt 0 0 40pt;
+}
+
+.back-arrow :hover{
+  cursor: pointer;
+}
+
+.image{
+  position: absolute;
+  left: 25%;
+  top: 10%;
+}
+
+img{
+  height: 170pt;
+  width: 190pt;
+}
+
+.text{
+  margin: 170pt 20pt 0 20pt;
+}
+
+.text p{
+  text-align: center;
+}
+
+.p1{
+  font-weight: bolder;
+  font-size: 20pt;
+  color: rgb(253, 128, 40);
+}
+
+.p2{
+  color: rgb(159, 159, 159);
+  font-size: 15pt;
+}
+
+.email{
+  font-size: 20pt;
+  color: rgb(183, 183, 183);;
+}
+
+input{
+  margin-left: 10pt;
+  border: none;
+  width: 250pt;
+  height: 20pt;
+  font-size: 20pt;
+  color: #cccccc;
+  outline: 0;
+  background: transparent;
+  border-bottom: 3px solid rgb(183, 183, 183);
+}
+
+.email-input{
+  margin-left: 45pt;
+}
+
+.password-recover-button{
+  background-color: rgb(183, 183, 183);
+  color: white;
+  border-radius: 5pt;
+  height: 40pt;
+  width: 330pt;
+  margin-left: 30pt;
+  font-size: 15pt;
+  font-weight: bold;
+}

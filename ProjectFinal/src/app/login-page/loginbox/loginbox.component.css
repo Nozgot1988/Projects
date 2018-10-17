@@ -1,0 +1,187 @@
+.logo-picture{
+  position: absolute;
+  margin: 40pt 0 0 40pt;
+}
+
+.login-menu{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 190pt;
+  left: 60pt;
+  width: 260pt;
+  display: inline-block;
+}
+
+.username-input{
+  margin-bottom:11pt;
+}
+
+.password-input{
+  margin-bottom:10pt;
+}
+
+.log-in-form-username {
+  width: 180pt;
+  padding: 8px;
+  display: inline-block;
+  margin: 0 0 0;
+  box-sizing: border-box;
+  border: 2px solid gainsboro;
+  outline: none;
+  height: 40px;
+  border-left-width: 1px;
+}
+
+.log-in-form-password{
+  width: 180pt;
+  padding: 8px;
+  display: inline-block;
+  margin: 0 0 0;
+  box-sizing: border-box;
+  border: 2px solid gainsboro;
+  outline: none;
+  height: 40px;
+  border-left-width: 1px;
+}
+
+.icon{
+  color: gainsboro;
+  box-sizing: border-box;
+  border: 2px solid gainsboro;
+  display: inline-block;
+  padding: 8px;
+  margin: 0;
+  height: 40px;
+  border-right-width: 1px;
+}
+
+.eye-icon{
+  color: gainsboro;
+  margin: -30pt;
+  display: inline-block;
+}
+
+.login-menu a{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  text-decoration: none;
+  color: gainsboro;
+}
+
+.login-menu input[type="submit"]
+{
+  margin-left: 30pt;
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 80pt;
+  background: green;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.login-menu input[type=submit]:hover
+{
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
+
+.button-container a{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  text-decoration: none;
+  color: gainsboro;
+}
+
+.button-container input[type="submit"]
+{
+  margin: 15pt 0 15pt 15pt;
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 80pt;
+  background: rgb(78, 189, 150);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.button-container input[type=submit]:hover
+{
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
+
+.create-account-menu {
+
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 80pt;
+  background: rgb(78, 189, 150);
+  font-size: 18px;
+  border-radius: 5px;
+  margin: 15pt 30pt 15pt 0pt;
+  float: left;
+}
+
+.create-account-menu:hover{
+  cursor: pointer;
+  background: #ffc107;
+  color: white;
+}
+
+.create-account-menu {
+  size: 100pt;
+  text-decoration: none;
+  color: white;
+}
+
+.social-button{
+  width: 40pt ;
+  height: 30pt;
+  color: grey;
+  background-color: white;
+  border-radius:  5px; /* IE 9, Safari 5, Chrome */
+  border-style: solid;
+  margin: 40pt 0 0 40pt;
+}
+
+.line{
+  height: 1px;
+  background: #cccccc;
+  width: 88pt;
+  display: inline-flex;
+}
+
+.or{
+  color: #cccccc;
+  font-size: 10pt;
+  margin: 10pt 10pt 0 10pt;
+  display: inline;
+}
+
+.side-picture{
+  float: right;
+}
+
+.side-picture img{
+  width: 550pt;
+  height: 500pt;
+}
+
+.forgot-pass{
+  margin-left: 27pt;
+  height: 40pt;
+  font-size: 18px;
+  background: rgb(78, 189, 150);
+  border-radius: 5px;
+  color: white;
+}
+
