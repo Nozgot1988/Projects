@@ -127,7 +127,7 @@
   background: rgb(78, 189, 150);
   font-size: 18px;
   border-radius: 5px;
-  margin: 15pt 30pt 15pt 0pt;
+  margin: 15pt 30pt 15pt 0;
   float: left;
 }
 
@@ -183,5 +183,11 @@
   background: rgb(78, 189, 150);
   border-radius: 5px;
   color: white;
+  outline: none;
+}
+
+.forgot-pass:hover{
+  cursor: pointer;
+  background: #ffc107;
 }
 

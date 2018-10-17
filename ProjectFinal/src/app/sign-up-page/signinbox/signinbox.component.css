@@ -137,6 +137,7 @@ input:focus ~ .bar:after {
   height: 30pt;
   width: 300pt;
   border: none;
+  outline: none;
   border-radius: 5pt;
 }
 

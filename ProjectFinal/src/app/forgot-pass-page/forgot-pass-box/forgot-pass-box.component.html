@@ -1,5 +1,5 @@
 <div class="forgot-pass-box">
-  <div class="back-arrow">
+  <div class="back-arrow" (click)="toLoginPage()">
       <i class="fas fa-arrow-left" style="font-size: 30pt"></i>
   </div>
   <div class="image">
@@ -10,7 +10,7 @@
     <p class="p2">Enter your e-mail address below<br>to your password reset instruction</p>
   </div>
   <div class="email-input">
-    <i class="fas fa-mail-bulk email"></i><input type="email" value="E-mail">
+    <i class="fas fa-mail-bulk email"></i><input type="email" value="E-mail" onfocus="this.value=''">
   </div>
   <br>
   <button type="button" class="password-recover-button">Recover Password</button>
