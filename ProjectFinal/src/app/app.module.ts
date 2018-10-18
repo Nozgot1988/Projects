@@ -6,7 +6,7 @@ import { LoginboxComponent } from './login-page/loginbox/loginbox.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { SigninboxComponent } from './sign-up-page/signinbox/signinbox.component';
-import {RouterModule} from "@angular/router";
+import { RouterModule } from "@angular/router";
 import { ForgotPassPageComponent } from './forgot-pass-page/forgot-pass-page.component';
 import { ForgotPassBoxComponent } from './forgot-pass-page/forgot-pass-box/forgot-pass-box.component';
 
