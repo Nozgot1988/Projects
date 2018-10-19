@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-
+import { Router, ActivatedRoute} from "@angular/router";
+import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-loginbox',
@@ -9,25 +9,21 @@ import {Router} from "@angular/router";
 })
 export class LoginboxComponent implements OnInit {
 
-   public name ="";
+  loginValue: string = '';
 
-    goToSignUp() {
-        this.router.navigateByUrl('/sign-up');
-    };
-
-    goToForgotPass(){
-        this.router.navigateByUrl('forgot-pass');
+  inputAreaEmpty(){
+    if (this.loginValue != '') {
+      console.log(this.loginValue);
     }
+  }
 
-    loginUser(login, password){
-
-
-    }
-
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router) { }
 
   ngOnInit() {
+
   }
+
 
 
 }

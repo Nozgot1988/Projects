@@ -4,7 +4,7 @@
 }
 
 .username-input{
-  margin-bottom: 20px;
+  margin-bottom: 12pt;
 }
 
 .login-menu{
@@ -14,16 +14,13 @@
   top: 190pt;
   left: 60pt;
   width: 260pt;
-  display: inline-block;
 }
 
 .log-in-form{
   color: #cccccc;
   padding-left: 5px;
-  height: 38px;
+  height: 30pt;
   width: 180pt;
-  display: inline;
-  margin: 0;
   border: 2px solid gainsboro;
   outline: none;
   border-left-width: 1px;
@@ -31,10 +28,10 @@
 
 
 .icon{
-  display: inline;
+  float: left;
   color: gainsboro;
   border: 2px solid gainsboro;
-  padding: 12px;
+  padding: 10pt;
   border-right-width: 1px;
 }
 
@@ -46,7 +43,7 @@
 
 .login-button{
   float: left;
-  margin: 20pt 20pt 20pt 0;
+  margin: 20pt 20pt 20pt 10pt;
   border: none;
   outline: none;
   height: 50px;
@@ -94,7 +91,7 @@
 }
 
 .forgot-pass{
-  margin-left: 27pt;
+  margin-left: 30pt;
   height: 40pt;
   font-size: 18px;
   background: rgb(78, 189, 150);
@@ -108,3 +105,8 @@
   background: #ffc107;
 }
 
+.error-message{
+  visibility: hidden;
+  font-size: 9pt;
+  color: #fb2525;
+}

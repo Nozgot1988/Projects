@@ -9,6 +9,9 @@ import { SigninboxComponent } from './sign-up-page/signinbox/signinbox.component
 import { RouterModule } from "@angular/router";
 import { ForgotPassPageComponent } from './forgot-pass-page/forgot-pass-page.component';
 import { ForgotPassBoxComponent } from './forgot-pass-page/forgot-pass-box/forgot-pass-box.component';
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+
+
 
 const routes = [
     {path: '', component: LoginPageComponent},
@@ -24,13 +27,16 @@ const routes = [
     SignUpPageComponent,
     SigninboxComponent,
     ForgotPassPageComponent,
-    ForgotPassBoxComponent
+    ForgotPassBoxComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
       RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
