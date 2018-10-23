@@ -17,11 +17,26 @@
 }
 
 .log-in-form{
-  color: #cccccc;
   padding-left: 5px;
   height: 30pt;
   width: 180pt;
   border: 2px solid gainsboro;
+  outline: none;
+  border-left-width: 1px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #cccccc;
+  font-weight: bold;
+  opacity: 1; /* Firefox */
+}
+
+.log-in-form-error{
+  color: red;
+  padding-left: 5px;
+  height: 30pt;
+  width: 180pt;
+  border: 2px solid red;
   outline: none;
   border-left-width: 1px;
 }
@@ -35,15 +50,23 @@
   border-right-width: 1px;
 }
 
+.icon-error{
+  float: left;
+  color: red;
+  border: 2px solid red;
+  padding: 10pt;
+  border-right-width: 1px;
+}
+
 .eye-icon{
   color: gainsboro;
   margin: -30pt;
   display: inline;
+  cursor: pointer;
 }
 
 .login-button{
-  float: left;
-  margin: 20pt 20pt 20pt 10pt;
+  margin-left: 20pt;
   border: none;
   outline: none;
   height: 50px;
@@ -63,8 +86,7 @@
 
 .create-account-menu {
   color: white;
-  display: inline-block;
-  margin: 20pt 0 20pt 20pt;
+  margin: 20pt 0 20pt 30pt;
   border: none;
   outline: none;
   height: 50px;
@@ -72,7 +94,6 @@
   background: rgb(78, 189, 150);
   font-size: 18px;
   border-radius: 5px;
-  float: left;
 }
 
 .create-account-menu:hover{
@@ -91,7 +112,7 @@
 }
 
 .forgot-pass{
-  margin-left: 30pt;
+  margin-left: 40pt;
   height: 40pt;
   font-size: 18px;
   background: rgb(78, 189, 150);
@@ -105,8 +126,8 @@
   background: #ffc107;
 }
 
-.error-message{
-  visibility: hidden;
+.invalid-feedback{
+  padding-top: 6pt;
   font-size: 9pt;
-  color: #fb2525;
+  color: red;
 }

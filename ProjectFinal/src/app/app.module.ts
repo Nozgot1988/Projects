@@ -11,8 +11,6 @@ import { ForgotPassPageComponent } from './forgot-pass-page/forgot-pass-page.com
 import { ForgotPassBoxComponent } from './forgot-pass-page/forgot-pass-box/forgot-pass-box.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-
-
 const routes = [
     {path: '', component: LoginPageComponent},
     {path: 'sign-up', component: SignUpPageComponent},

@@ -98,8 +98,7 @@ input:focus ~ .bar:after {
   background: #ffc107;
   color: white;
   border-radius: 5pt;
-  margin-left: 10pt;
-
+  margin: 20pt 0 0 10pt;
 }
 
 .loginbox input[type="submit"]:hover
