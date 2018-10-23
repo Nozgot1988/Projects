@@ -10,6 +10,7 @@ import { RouterModule } from "@angular/router";
 import { ForgotPassPageComponent } from './forgot-pass-page/forgot-pass-page.component';
 import { ForgotPassBoxComponent } from './forgot-pass-page/forgot-pass-box/forgot-pass-box.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { User } from "./user.model";
 
 const routes = [
     {path: '', component: LoginPageComponent},

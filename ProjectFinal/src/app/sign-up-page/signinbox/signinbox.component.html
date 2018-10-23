@@ -1,47 +1,54 @@
 <div class="loginbox">
   <h1>SIGN UP</h1>
-  <form>
-    <div class="group">
-      <input type="text" name=""  required style="width: 290pt">
-      <span style="width: 310pt" class="bar"></span>
-      <label>Full name</label>
-    </div>
-    <table>
-      <tr>
-        <th>
-          <div class="group">
-            <input type="text" name=""  required>
-            <span class="bar"></span>
-            <label>Age</label>
-          </div>
-        </th>
-        <th>
-          <div class="group">
-            <input type="text" name=""  required>
-            <span class="bar"></span>
-            <label>City</label>
-          </div>
-        </th>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <th>
-          <div class="group">
-            <input type="text" name=""  required>
-            <span class="bar"></span>
-            <label>E-mail</label>
-          </div>
-        </th>
-        <th>
-          <div class="group">
-            <input type="text" name=""  required>
-            <span class="bar"></span>
-            <label>College</label>
-          </div>
-        </th>
-      </tr>
-    </table>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div class="group">
+        <input type="text" required formControlName="firstName" (blur)="logValidationErrors()">
+        <span class="bar"></span>
+        <label>First name</label>
+        <span class="invalid-feedback" *ngIf="formErrors.firstName || (this.submitted && f.firstName.valid)">
+          {{formErrors.firstName}}
+        </span>
+      </div>
+      <div class="group">
+        <input type="text" required formControlName="lastName" (blur)="logValidationErrors()">
+        <span class="bar"></span>
+        <label>Last name</label>
+        <span class="invalid-feedback" *ngIf="formErrors.lastName">
+          {{formErrors.lastName}}
+        </span>
+      </div>
+      <div class="group">
+        <input type="password" required formControlName="password" (blur)="logValidationErrors()" pattern="^(?=.*\d).{4,8}$">
+        <span class="bar"></span>
+        <label>Password</label>
+        <span class="invalid-feedback" *ngIf="formErrors.password" style="white-space: pre-line;">
+          {{formErrors.password}}
+        </span>
+      </div>
+      <div class="group">
+        <input type="password" required formControlName="confirmPassword" (blur)="logValidationErrors()">
+        <span class="bar"></span>
+        <label>Confirm password</label>
+        <span class="invalid-feedback" *ngIf="formErrors.confirmPassword">
+          {{formErrors.confirmPassword}}
+        </span>
+      </div>
+      <div class="group">
+        <input type="text" required formControlName="email" (blur)="logValidationErrors()">
+        <span class="bar"></span>
+        <label>E-mail</label>
+        <span class="invalid-feedback" *ngIf="formErrors.email">
+          {{formErrors.email}}
+        </span>
+      </div>
+      <div class="group">
+        <input type="text" required formControlName="country" (blur)="logValidationErrors()">
+        <span class="bar"></span>
+        <label>Country</label>
+        <span class="invalid-feedback" *ngIf="formErrors.country">
+          {{formErrors.country}}
+        </span>
+      </div>
     <input type="submit" value="SIGN UP">
     <div>
       <button type="button" class="sign-in-button"(click)="goToLogin()">BACK TO LOGIN</button>

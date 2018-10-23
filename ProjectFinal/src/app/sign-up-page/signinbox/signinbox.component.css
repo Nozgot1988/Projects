@@ -20,8 +20,9 @@ h1{
 }
 
 .group {
+  display: inline-block;
   position: relative;
-  margin-bottom: 30px;
+  margin: 0 5px 30px 5px;
 }
 
 input {
@@ -53,7 +54,7 @@ label {
 
 /* active state */
 input:focus ~ label, input:valid ~ label {
-  top: -15px;
+  top: -10px;
   font-size: 14px;
   color: grey;
 }
@@ -108,24 +109,6 @@ input:focus ~ .bar:after {
   color: white;
 }
 
-.line{
-  margin-top: 30pt;
-  margin-bottom: 10pt;
-  height: 1px;
-  background: #cccccc;
-  width: 115pt;
-  float: left;
-}
-
-.or{
-  margin-top: 30pt;
-  margin-bottom: 10pt;
-  color: #cccccc;
-  font-size: 8pt;
-  margin-left: 15pt;
-  margin-right: 15pt;
-}
-
 .sign-in-button{
   margin-top: 20pt;
   margin-left: 10pt;
@@ -145,3 +128,12 @@ input:focus ~ .bar:after {
   color:white;
   background: #fb2525;
 }
+
+.invalid-feedback{
+  width: 148pt;
+  word-break: break-all;
+  float: left;
+  font-size: 10px;
+  color: red;
+}
+
