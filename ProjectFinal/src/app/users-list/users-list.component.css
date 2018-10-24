@@ -1,0 +1,14 @@
+.container{
+  overflow: scroll;
+  display: block;
+  position: relative;
+  float: left;
+  top: 25%;
+  left: 25%;
+  color: rgb(129, 150, 160);
+  margin: 20pt 40pt 40pt -300pt;
+  background: rgb(242, 247, 248);
+  width: 650pt;
+  height: 580pt;
+  border: none;
+}

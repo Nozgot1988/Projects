@@ -5,19 +5,21 @@
   <div class="login-menu">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="username-input">
-        <i [ngClass]="{ 'icon-error': f.login.errors?.required && f.login.touched || submitted && f.login.errors?.pattern || f.login.errors?.required && submitted }" class="fas fa-user-alt icon"></i>
-        <input [ngClass]="{ 'log-in-form-error': f.login.errors?.required  && f.login.touched || submitted && f.login.errors?.pattern || f.login.errors?.required && submitted }" type="text" class="log-in-form" onfocus="this.placeholder=''" formControlName="login" placeholder="Username or e-mail" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
-        <div *ngIf="f.login.errors?.required && f.login.touched || f.login.errors?.required && submitted" class="invalid-feedback">E-mail is required</div>
-        <div *ngIf="f.login.errors?.pattern && submitted" class="invalid-feedback">E-mail is invalid</div>
+        <i [ngClass]="{ 'icon-error': addErrorClassLogin() }" class="fas fa-user-alt icon"></i>
+        <input [ngClass]="{ 'log-in-form-error': addErrorClassLogin() }" type="text" class="log-in-form" onfocus="this.placeholder=''"
+               formControlName="login" placeholder="Username or e-mail"
+               [pattern]="pattern">
+        <div *ngIf="loginRequirementCheck()" class="invalid-feedback">E-mail is required</div>
+        <div *ngIf="loginValidCheck()" class="invalid-feedback">E-mail is invalid</div>
       </div>
       <div class="password-input">
-        <i class="fas fa-key icon" [ngClass]="{ 'icon-error':f.password.errors && f.password.touched || submitted && f.password.errors }"></i>
-        <input [ngClass]="{ 'log-in-form-error': f.password.errors && f.password.touched || submitted && f.password.errors }" [type]="passwordType" class="log-in-form" onfocus="this.placeholder=''" formControlName="password" placeholder="Password">
+        <i class="fas fa-key icon" [ngClass]="{ 'icon-error': addErrorClassPassword() }"></i>
+        <input [ngClass]="{ 'log-in-form-error': addErrorClassPassword() }" [type]="passwordType" class="log-in-form" onfocus="this.placeholder=''" formControlName="password" placeholder="Password">
         <i class="fas fa-eye eye-icon" (mouseup)="mouseUpEvent()" (mousedown)="mouseDownEvent()" (mouseleave)="mouseUpEvent()"></i>
-        <div *ngIf="f.password.touched && f.password.errors?.required || f.password.errors?.required && submitted" class="invalid-feedback">Password is required</div>
+        <div *ngIf="passwordRequirementCheck()" class="invalid-feedback">Password is required</div>
       </div>
       <br>
-        <button class="login-button">LOGIN</button>
+        <button class="login-button" (click)="goToUsersList()">LOGIN</button>
         <button type="button" class="create-account-menu" (click)="goToSignUp()">SIGN UP</button>
         <button type="button" class="forgot-pass" (click)="goToForgotPass()">Forgot your password?</button>
     </form>

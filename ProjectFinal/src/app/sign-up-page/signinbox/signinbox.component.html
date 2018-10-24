@@ -18,7 +18,7 @@
         </span>
       </div>
       <div class="group">
-        <input type="password" required formControlName="password" (blur)="logValidationErrors()" pattern="^(?=.*\d).{4,8}$">
+        <input type="password" required formControlName="password" (blur)="logValidationErrors()" [pattern]='passwordPattern'>
         <span class="bar"></span>
         <label>Password</label>
         <span class="invalid-feedback" *ngIf="formErrors.password" style="white-space: pre-line;">
@@ -34,7 +34,7 @@
         </span>
       </div>
       <div class="group">
-        <input type="text" required formControlName="email" (blur)="logValidationErrors()">
+        <input type="text" required formControlName="email" (blur)="logValidationErrors()" [pattern]="emailPattern">
         <span class="bar"></span>
         <label>E-mail</label>
         <span class="invalid-feedback" *ngIf="formErrors.email">

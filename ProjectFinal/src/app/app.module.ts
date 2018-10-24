@@ -10,13 +10,16 @@ import { RouterModule } from "@angular/router";
 import { ForgotPassPageComponent } from './forgot-pass-page/forgot-pass-page.component';
 import { ForgotPassBoxComponent } from './forgot-pass-page/forgot-pass-box/forgot-pass-box.component';
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { User } from "./user.model";
+import { UsersListComponent } from './users-list/users-list.component';
+import { TableComponent } from './users-list/table/table.component';
+import {HttpModule} from "@angular/http";
 
 const routes = [
     {path: '', component: LoginPageComponent},
     {path: 'sign-up', component: SignUpPageComponent},
-    {path: 'forgot-pass', component: ForgotPassPageComponent}
-]
+    {path: 'forgot-pass', component: ForgotPassPageComponent},
+    {path: 'user-list', component: UsersListComponent}
+];
 
 @NgModule({
   declarations: [
@@ -27,12 +30,15 @@ const routes = [
     SigninboxComponent,
     ForgotPassPageComponent,
     ForgotPassBoxComponent,
+    UsersListComponent,
+    TableComponent
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
-      RouterModule.forRoot(routes)
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
   ],

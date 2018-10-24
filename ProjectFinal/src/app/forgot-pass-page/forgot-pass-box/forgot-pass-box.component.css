@@ -88,4 +88,11 @@ input{
   background: #fb2525;
 }
 
+.invalid-feedback{
+  margin-left: 32pt;
+  padding-top: 6pt;
+  font-size: 9pt;
+  color: red;
+}
+
 

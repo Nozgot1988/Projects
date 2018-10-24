@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { User } from "../../user.model";
 import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
 
 function passwordConfirming(c: AbstractControl): any {
@@ -23,6 +22,8 @@ export class SigninboxComponent implements OnInit {
 
   submitted = false;
   signUpForm: FormGroup;
+  passwordPattern: string = '^(?=.*\\d).{8,32}$';
+  emailPattern: string = '^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$';
 
   constructor(
     private router: Router,
@@ -55,6 +56,7 @@ export class SigninboxComponent implements OnInit {
   onSubmit(): void {
       this.submitted = true;
       this.logValidationErrors(this.signUpForm);
+      console.log(this.signUpForm.value)
   }
 
   validationMessages = {
@@ -68,7 +70,7 @@ export class SigninboxComponent implements OnInit {
     },
     'password': {
       'required': 'Password is required.',
-      'pattern': 'Password must be  between 4-8 characters and have at least 1 digit.'
+      'pattern': 'Password must be  between 8-32 characters and have at least 1 digit.'
     },
     'confirmPassword': {
       'required': 'Please confirm the password.',

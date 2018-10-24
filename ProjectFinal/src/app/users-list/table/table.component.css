@@ -1,0 +1,19 @@
+.user-table{
+  margin:0 10pt 0 20pt;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  position: absolute;
+}
+
+th{
+  width: 150pt;
+  height: 30pt;
+}
+
+td{
+  text-align: center;
+  width: 150pt;
+  height: 30pt;
+  color: rgb(129, 150, 161);
+  background: white;
+}
